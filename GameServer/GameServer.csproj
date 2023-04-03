@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>GameServer</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFramework>net45</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>Preview</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>..\bin</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientCommon\ClientCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ExitGames.Logging.Log4Net">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\ExitGames.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="ExitGamesLibs">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\ExitGamesLibs.dll</HintPath>
+    </Reference>
+    <Reference Include="ServerFramework">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\ServerFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="Photon.SocketServer">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\Photon.SocketServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="PhotonHostRuntimeInterfaces">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\PhotonHostRuntimeInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="GameServer.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

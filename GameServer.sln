@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameServer", "GameServer\GameServer.csproj", "{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientCommon", "ClientCommon\ClientCommon.csproj", "{6467E73C-9A81-4BFB-9E1F-59C5D008D384}"
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "PhotonSocketServer", "..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\bin_Win64\PhotonSocketServer.exe", "{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = E:\Code\0RappelzRift\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\bin_Win64\PhotonSocketServer.exe
+		RemoteMachine = EBEST
+		StartingDirectory = E:\Code\0RappelzRift\RapperlzRift-Server\bin
+		Arguments = /debug GameServer_1 /config App.config
+		Environment = 默认值
+		LaunchingEngine = fb0d4648-f776-4980-95f8-bb7f36ebc1ee
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+		IORedirection = Auto
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Debug|x64.Build.0 = Debug|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Release|x64.ActiveCfg = Release|Any CPU
+		{B76B277F-D5EE-4D9C-B5BA-0A826DAF6530}.Release|x64.Build.0 = Release|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Debug|x64.Build.0 = Debug|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Release|x64.ActiveCfg = Release|Any CPU
+		{6467E73C-9A81-4BFB-9E1F-59C5D008D384}.Release|x64.Build.0 = Release|Any CPU
+		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Debug|Any CPU.ActiveCfg = Release|x64
+		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Debug|x64.ActiveCfg = Release|x64
+		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Release|Any CPU.ActiveCfg = Release|x64
+		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Release|x64.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D405B00C-BEB8-4C4F-8392-D93AFD6980FA}
+	EndGlobalSection
+EndGlobal
