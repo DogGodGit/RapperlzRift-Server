@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using ClientCommon;
+using GameServer.CommandHandlers;
 using ServerFramework;
 
 namespace GameServer;

@@ -1,4 +1,5 @@
 using ClientCommon;
+using GameServer.CommandHandlers;
 using ServerFramework;
 
 namespace GameServer;

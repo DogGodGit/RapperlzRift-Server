@@ -25,19 +25,22 @@
     <Reference Include="ExitGamesLibs">
       <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\ExitGamesLibs.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="ServerFramework">
-      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\ServerFramework.dll</HintPath>
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\ServerFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="Photon.SocketServer">
-      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\Photon.SocketServer.dll</HintPath>
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\Photon.SocketServer.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="PhotonHostRuntimeInterfaces">
-      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\PhotonHostRuntimeInterfaces.dll</HintPath>
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\RappelzRiftStg\GameServer_1\bin\LitJson.dll</HintPath>
+      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
   </ItemGroup>
