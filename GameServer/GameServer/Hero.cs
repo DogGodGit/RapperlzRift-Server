@@ -3484,7 +3484,7 @@ public class Hero : Unit
 		m_equippedArmor = GetMainGear(equippedMainGearArmorId);
 		CompleteLogIn_HeroSubGears(drcHeroSubGears, drcHeroSubGearSoulstoneSockets, drcHeroSubGearRuneSockets);
 		CompleteLogIn_Mount(drcHeroMounts, drcHeroMountGears, drcHeroMountGearOptionAttrs, drcEquippedMountGearSlots);
-		int nEquippedMountId = Convert.ToInt32(drHero["equippedMountId"]);
+		int nEquippedMountId = SFDBUtil.ToInt32(drHero["equippedMountId"]);
 		m_equippedMount = GetMount(nEquippedMountId);
 		if (m_bIsRiding)
 		{
@@ -3494,13 +3494,13 @@ public class Hero : Unit
 		CreateInventorySlots(levelMaster.inventorySlotAccCount + m_nPaidInventorySlotCount);
 		foreach (DataRow dr8 in drcInventorySlots)
 		{
-			int nSlotIndex = Convert.ToInt32(dr8["slotIndex"]);
+			int nSlotIndex = SFDBUtil.ToInt32(dr8["slotIndex"]);
 			InventorySlot slot = GetInventorySlot(nSlotIndex);
 			if (slot == null)
 			{
 				throw new Exception("존재하지않는 인벤토리 슬롯입니다. nSlotIndex = " + nSlotIndex);
 			}
-			int nType = Convert.ToInt32(dr8["slotType"]);
+			int nType = SFDBUtil.ToInt32(dr8["slotType"]);
 			switch (nType)
 			{
 			case 1:
@@ -3516,7 +3516,7 @@ public class Hero : Unit
 			}
 			case 2:
 			{
-				int nSubGearId = Convert.ToInt32(dr8["subGearId"]);
+				int nSubGearId = SFDBUtil.ToInt32(dr8["subGearId"]);
 				HeroSubGear subGear = GetSubGear(nSubGearId);
 				if (subGear == null)
 				{
@@ -3527,9 +3527,9 @@ public class Hero : Unit
 			}
 			case 3:
 			{
-				int nItemId = Convert.ToInt32(dr8["itemId"]);
-				bool bOwned = Convert.ToBoolean(dr8["itemOwned"]);
-				int nCount2 = Convert.ToInt32(dr8["itemCount"]);
+				int nItemId = SFDBUtil.ToInt32(dr8["itemId"]);
+				bool bOwned = SFDBUtil.ToBoolean(dr8["itemOwned"]);
+				int nCount2 = SFDBUtil.ToInt32(dr8["itemCount"]);
 				Item item = Resource.instance.GetItem(nItemId);
 				HeroInventoryItem heroInventoryItem = GetOrCreateInventoryItem(item);
 				ItemInventoryObject itemInventoryObject = new ItemInventoryObject(heroInventoryItem, bOwned, nCount2);
@@ -3555,7 +3555,7 @@ public class Hero : Unit
 		CompleteLogIn_Mail(drcMails, drcMailAttachments, currentTime);
 		foreach (DataRow dr22 in drcHeroSkills)
 		{
-			int nSkillId3 = Convert.ToInt32(dr22["skillId"]);
+			int nSkillId3 = SFDBUtil.ToInt32(dr22["skillId"]);
 			JobSkill skill3 = m_job.GetSkill(nSkillId3);
 			if (skill3 == null)
 			{
@@ -3600,7 +3600,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr20 in drcHeroLevelUpRewards)
 		{
-			int nEntryId = Convert.ToInt32(dr20["entryId"]);
+			int nEntryId = SFDBUtil.ToInt32(dr20["entryId"]);
 			m_receivedLevelUpRewards.Add(nEntryId);
 		}
 		foreach (DataRow dr19 in drcHeroAccessRewards)
@@ -3616,9 +3616,9 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr18 in drcHeroSeriesMissions)
 		{
-			int nMissionId = Convert.ToInt32(dr18["missionId"]);
-			int nCurrentStep = Convert.ToInt32(dr18["currentStep"]);
-			int nProgressCount = Convert.ToInt32(dr18["progressCount"]);
+			int nMissionId = SFDBUtil.ToInt32(dr18["missionId"]);
+			int nCurrentStep = SFDBUtil.ToInt32(dr18["currentStep"]);
+			int nProgressCount = SFDBUtil.ToInt32(dr18["progressCount"]);
 			HeroSeriesMission heroMission = GetSeriesMission(nMissionId);
 			if (nCurrentStep <= heroMission.mission.lastStep.step)
 			{
@@ -3647,14 +3647,14 @@ public class Hero : Unit
 			wing.Init(dr16);
 			AddWing(wing);
 		}
-		int nEquippedWingId = Convert.ToInt32(drHero["equippedWingId"]);
+		int nEquippedWingId = SFDBUtil.ToInt32(drHero["equippedWingId"]);
 		if (nEquippedWingId > 0)
 		{
 			m_equippedWing = GetWing(nEquippedWingId);
 		}
 		foreach (DataRow dr15 in drcHeroWingEnchants)
 		{
-			int nPartId = Convert.ToInt32(dr15["partId"]);
+			int nPartId = SFDBUtil.ToInt32(dr15["partId"]);
 			HeroWingPart heroWingPart = GetWingPart(nPartId);
 			HeroWingEnchant wingEnchant = new HeroWingEnchant(heroWingPart);
 			wingEnchant.Init(dr15);
@@ -3667,51 +3667,51 @@ public class Hero : Unit
 		CompleteLogin_WingMemoryPieceSlots(drcHeroWingMemoryPieceSlots);
 		foreach (DataRow dr14 in drcStoryDungeonClears)
 		{
-			int nDungeon = Convert.ToInt32(dr14["dungeonNo"]);
-			int nMaxDifficulty = Convert.ToInt32(dr14["maxDifficulty"]);
+			int nDungeon = SFDBUtil.ToInt32(dr14["dungeonNo"]);
+			int nMaxDifficulty = SFDBUtil.ToInt32(dr14["maxDifficulty"]);
 			m_storyDungeonClearMaxDifficulties.Add(nDungeon, nMaxDifficulty);
 		}
 		foreach (DataRow dr13 in drcStoryDungeonEnterCountsOfDate)
 		{
 			DateTime date = SFDBUtil.ToDateTime(dr13["date"]);
-			int nDungeonNo = Convert.ToInt32(dr13["dungeonNo"]);
-			int nCount = Convert.ToInt32(dr13["cnt"]);
+			int nDungeonNo = SFDBUtil.ToInt32(dr13["dungeonNo"]);
+			int nCount = SFDBUtil.ToInt32(dr13["cnt"]);
 			m_storyDungeonPlays.Add(new StoryDungeonPlay(nDungeonNo, date, nCount));
 		}
 		foreach (DataRow dr12 in drcExpDungeonClearDifficulties)
 		{
-			int nDifficulty2 = Convert.ToInt32(dr12["difficulty"]);
+			int nDifficulty2 = SFDBUtil.ToInt32(dr12["difficulty"]);
 			m_expDungeonClearDifficulties.Add(nDifficulty2);
 		}
 		if (drExpDungeonEnterCountOfDate != null)
 		{
 			m_dailyExpDungeonPlayCount.date = SFDBUtil.ToDateTime(drExpDungeonEnterCountOfDate["date"]);
-			m_dailyExpDungeonPlayCount.value = Convert.ToInt32(drExpDungeonEnterCountOfDate["cnt"]);
+			m_dailyExpDungeonPlayCount.value = SFDBUtil.ToInt32(drExpDungeonEnterCountOfDate["cnt"]);
 		}
 		foreach (DataRow dr11 in drcGoldDungeonClearDifficulties)
 		{
-			int nDifficulty = Convert.ToInt32(dr11["difficulty"]);
+			int nDifficulty = SFDBUtil.ToInt32(dr11["difficulty"]);
 			m_goldDungeonClearDifficulties.Add(nDifficulty);
 		}
 		if (drGoldDungeonEnterCountOfDate != null)
 		{
 			m_dailyGoldDungeonPlayCount.date = SFDBUtil.ToDateTime(drGoldDungeonEnterCountOfDate["date"]);
-			m_dailyGoldDungeonPlayCount.value = Convert.ToInt32(drGoldDungeonEnterCountOfDate["cnt"]);
+			m_dailyGoldDungeonPlayCount.value = SFDBUtil.ToInt32(drGoldDungeonEnterCountOfDate["cnt"]);
 		}
 		if (drAncientRelicEnterCountOfDate != null)
 		{
 			m_dailyAncientRelicPlayCount.date = SFDBUtil.ToDateTime(drAncientRelicEnterCountOfDate["date"]);
-			m_dailyAncientRelicPlayCount.value = Convert.ToInt32(drAncientRelicEnterCountOfDate["cnt"]);
+			m_dailyAncientRelicPlayCount.value = SFDBUtil.ToInt32(drAncientRelicEnterCountOfDate["cnt"]);
 		}
 		foreach (DataRow dr10 in drcFieldOfHonorTargets)
 		{
-			int nRanking = Convert.ToInt32(dr10["ranking"]);
+			int nRanking = SFDBUtil.ToInt32(dr10["ranking"]);
 			m_fieldOfHonorTargets.Add(nRanking);
 		}
 		if (drFieldOfHonorEnterCountOfDate != null)
 		{
 			m_dailyFieldOfHonorPlayCount.date = SFDBUtil.ToDateTime(drFieldOfHonorEnterCountOfDate["date"]);
-			m_dailyFieldOfHonorPlayCount.value = Convert.ToInt32(drFieldOfHonorEnterCountOfDate["cnt"]);
+			m_dailyFieldOfHonorPlayCount.value = SFDBUtil.ToInt32(drFieldOfHonorEnterCountOfDate["cnt"]);
 		}
 		foreach (DataRow dr9 in drcFieldOfHonorHistories)
 		{
@@ -3779,7 +3779,7 @@ public class Hero : Unit
 		if (drSoulCoveterEnterCountOfWeekly != null)
 		{
 			m_weeklySoulCoveterPlayCount.date = SFDBUtil.ToDateTime(drSoulCoveterEnterCountOfWeekly["dateOfMonday"], DateTime.MinValue.Date);
-			m_weeklySoulCoveterPlayCount.value = Convert.ToInt32(drSoulCoveterEnterCountOfWeekly["cnt"]);
+			m_weeklySoulCoveterPlayCount.value = SFDBUtil.ToInt32(drSoulCoveterEnterCountOfWeekly["cnt"]);
 		}
 		foreach (DataRow dr7 in drcHeroIllustratedBooks)
 		{
@@ -3789,7 +3789,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr6 in drcHeroSceneryQuests)
 		{
-			int nQuestId = Convert.ToInt32(dr6["questId"]);
+			int nQuestId = SFDBUtil.ToInt32(dr6["questId"]);
 			AddSceneryQuestCompletion(nQuestId);
 		}
 		CompleteLogin_Accomplishment(drcHeroAccomplishmentRewards, drHero, nAccSoulCoveterPlayCount);
@@ -3805,7 +3805,7 @@ public class Hero : Unit
 		if (drEliteDungeonEnterCountOfDate != null)
 		{
 			m_dailyEliteDungeonPlayCount.date = SFDBUtil.ToDateTime(drEliteDungeonEnterCountOfDate["date"], DateTime.MinValue);
-			m_dailyEliteDungeonPlayCount.value = Convert.ToInt32(drEliteDungeonEnterCountOfDate["cnt"]);
+			m_dailyEliteDungeonPlayCount.value = SFDBUtil.ToInt32(drEliteDungeonEnterCountOfDate["cnt"]);
 		}
 		CompleteLogin_ProofOfValor(nProofOfValorClaeredCount, drProofOfValorEnterCountOfDate, drLastHeroProofOfValorInstance, currentTime);
 		foreach (DataRow dr4 in drcHeroNpcShopProducts)
@@ -3816,7 +3816,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr3 in drcHeroRankActiveSkills)
 		{
-			int nSkillId2 = Convert.ToInt32(dr3["skillId"]);
+			int nSkillId2 = SFDBUtil.ToInt32(dr3["skillId"]);
 			RankActiveSkill skill2 = res.GetRankActiveSkill(nSkillId2);
 			if (skill2 == null)
 			{
@@ -3826,7 +3826,7 @@ public class Hero : Unit
 			heroSkill2.Init(dr3);
 			AddRankActiveSkill(heroSkill2);
 		}
-		int nSelectedRankActiveSkillId = Convert.ToInt32(drHero["selectedRankActiveSkillId"]);
+		int nSelectedRankActiveSkillId = SFDBUtil.ToInt32(drHero["selectedRankActiveSkillId"]);
 		if (nSelectedRankActiveSkillId > 0)
 		{
 			m_selectedRankActiveSkill = GetRankActiveSkill(nSelectedRankActiveSkillId);
@@ -3837,7 +3837,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr2 in drcHeroRankPassiveSkills)
 		{
-			int nSkillId = Convert.ToInt32(dr2["skillId"]);
+			int nSkillId = SFDBUtil.ToInt32(dr2["skillId"]);
 			RankPassiveSkill skill = res.GetRankPassiveSkill(nSkillId);
 			if (skill == null)
 			{
@@ -3850,7 +3850,7 @@ public class Hero : Unit
 		CompleteLogin_RookieGift(drHero, currentTime);
 		foreach (DataRow dr in drcHeroOpenGiftRewards)
 		{
-			int nDay = Convert.ToInt32(dr["day"]);
+			int nDay = SFDBUtil.ToInt32(dr["day"]);
 			AddReceivedOpenGiftReward(nDay);
 		}
 		CompleteLogin_DailyQuest(drHero, currentDate, nDailyQuestAcceptionCount, drcHeroDailyQuests);
@@ -3858,7 +3858,7 @@ public class Hero : Unit
 		if (drWisdomTempleEnterCountOfDate != null)
 		{
 			m_dailyWisdomTemplePlayCount.date = SFDBUtil.ToDateTime(drWisdomTempleEnterCountOfDate["date"], DateTime.MinValue);
-			m_dailyWisdomTemplePlayCount.value = Convert.ToInt32(drWisdomTempleEnterCountOfDate["cnt"]);
+			m_dailyWisdomTemplePlayCount.value = SFDBUtil.ToInt32(drWisdomTempleEnterCountOfDate["cnt"]);
 		}
 		CompleteLogin_Open7DayEvent(drcOpen7DayEventMissions, drcOpen7DayEventProducts, drcOpen7DayEventProgressCounts);
 		CompleteLogin_Retrieval(yesterDay, currentDate, drcPrevRetrievalProgressCounts, drcCurrRetrievalProgressCounts, drcRetrievals);
@@ -3895,16 +3895,16 @@ public class Hero : Unit
 	private void CompleteLogIn_Base(DataRow drHero, DateTimeOffset currentTime)
 	{
 		DateTime currentDate = currentTime.Date;
-		m_nationInst = Cache.instance.GetNationInstance(Convert.ToInt32(drHero["nationId"]));
-		m_sName = Convert.ToString(drHero["name"]);
-		m_job = Resource.instance.GetJob(Convert.ToInt32(drHero["jobId"]));
-		m_nLevel = Convert.ToInt32(drHero["level"]);
-		m_lnExp = Convert.ToInt64(drHero["exp"]);
+		m_nationInst = Cache.instance.GetNationInstance(SFDBUtil.ToInt32(drHero["nationId"]));
+		m_sName = SFDBUtil.ToString(drHero["name"]);
+		m_job = Resource.instance.GetJob(SFDBUtil.ToInt32(drHero["jobId"]));
+		m_nLevel = SFDBUtil.ToInt32(drHero["level"]);
+		m_lnExp = SFDBUtil.ToInt64(drHero["exp"]);
 		m_levelUpdateTime = (DateTimeOffset)drHero["levelUpdateTime"];
-		m_lnBattlePower = Convert.ToInt64(drHero["battlePower"]);
+		m_lnBattlePower = SFDBUtil.ToInt64(drHero["battlePower"]);
 		m_battlePowerUpdateTime = (DateTimeOffset)drHero["battlePowerUpdateTime"];
 		m_lastLocation = Resource.instance.GetLocation(SFDBUtil.ToInt32(drHero["lastLocationId"]));
-		m_nLastLocationParam = Convert.ToInt32(drHero["lastLocationParam"]);
+		m_nLastLocationParam = SFDBUtil.ToInt32(drHero["lastLocationParam"]);
 		m_lastInstanceId = SFDBUtil.ToGuid(drHero["lastInstanceId"]);
 		m_lastPosition.x = SFDBUtil.ToSingle(drHero["lastXPosition"]);
 		m_lastPosition.y = SFDBUtil.ToSingle(drHero["lastYPosition"]);
@@ -3916,83 +3916,83 @@ public class Hero : Unit
 		m_previousPosition.y = SFDBUtil.ToSingle(drHero["previousYPosition"]);
 		m_previousPosition.z = SFDBUtil.ToSingle(drHero["previousZPosition"]);
 		m_fPreviousYRotation = SFDBUtil.ToSingle(drHero["previousYRotation"]);
-		m_nHP = Convert.ToInt32(drHero["hp"]);
-		m_nPaidInventorySlotCount = Convert.ToInt32(drHero["paidInventorySlotCount"]);
-		m_nOwnDia = Convert.ToInt32(drHero["ownDia"]);
-		m_lnGold = Convert.ToInt64(drHero["gold"]);
-		m_nHonorPoint = Convert.ToInt32(drHero["honorPoint"]);
-		m_nSoulPowder = Convert.ToInt32(drHero["soulPowder"]);
-		m_nVipPoint = Convert.ToInt32(drHero["vipPoint"]);
+		m_nHP = SFDBUtil.ToInt32(drHero["hp"]);
+		m_nPaidInventorySlotCount = SFDBUtil.ToInt32(drHero["paidInventorySlotCount"]);
+		m_nOwnDia = SFDBUtil.ToInt32(drHero["ownDia"]);
+		m_lnGold = SFDBUtil.ToInt64(drHero["gold"]);
+		m_nHonorPoint = SFDBUtil.ToInt32(drHero["honorPoint"]);
+		m_nSoulPowder = SFDBUtil.ToInt32(drHero["soulPowder"]);
+		m_nVipPoint = SFDBUtil.ToInt32(drHero["vipPoint"]);
 		m_vipLevel = Resource.instance.GetVipLevelByPoint(totalVipPoint);
 		m_mainGearEnchantDailyCount.date = SFDBUtil.ToDateTime(drHero["mainGearEnchantDate"], DateTime.MinValue.Date);
-		m_mainGearEnchantDailyCount.value = Convert.ToInt32(drHero["mainGearEnchantCount"]);
+		m_mainGearEnchantDailyCount.value = SFDBUtil.ToInt32(drHero["mainGearEnchantCount"]);
 		RefreshMainGearEnchantDailyCount(currentDate);
 		m_mainGearRefinementDailyCount.date = SFDBUtil.ToDateTime(drHero["mainGearRefinementDate"], DateTime.MinValue.Date);
-		m_mainGearRefinementDailyCount.value = Convert.ToInt32(drHero["mainGearRefinementCount"]);
+		m_mainGearRefinementDailyCount.value = SFDBUtil.ToInt32(drHero["mainGearRefinementCount"]);
 		RefreshMainGearRefinementDailyCount(currentDate);
-		m_nLak = Convert.ToInt32(drHero["lak"]);
+		m_nLak = SFDBUtil.ToInt32(drHero["lak"]);
 		m_freeImmediateRevivalDailyCount.date = SFDBUtil.ToDateTime(drHero["freeImmediateRevivalDate"], DateTime.MinValue.Date);
-		m_freeImmediateRevivalDailyCount.value = Convert.ToInt32(drHero["freeImmediateRevivalCount"]);
+		m_freeImmediateRevivalDailyCount.value = SFDBUtil.ToInt32(drHero["freeImmediateRevivalCount"]);
 		RefreshFreeImmediateRevivalDailyCount(currentDate);
 		m_paidImmediateRevivalDailyCount.date = SFDBUtil.ToDateTime(drHero["paidImmediateRevivalDate"], DateTime.MinValue.Date);
-		m_paidImmediateRevivalDailyCount.value = Convert.ToInt32(drHero["paidImmediateRevivalCount"]);
+		m_paidImmediateRevivalDailyCount.value = SFDBUtil.ToInt32(drHero["paidImmediateRevivalCount"]);
 		RefreshPaidImmediateRevivalDailyCount(currentDate);
 		m_lastLogoutTime = SFDBUtil.ToNullableDateTimeOffset(drHero["lastLogoutTime"]);
-		m_nRestTime = Convert.ToInt32(drHero["restTime"]);
+		m_nRestTime = SFDBUtil.ToInt32(drHero["restTime"]);
 		m_dailyAttendRewardDay.date = SFDBUtil.ToDateTime(drHero["dailyAttendRewardDate"], DateTime.MinValue.Date);
-		m_dailyAttendRewardDay.value = Convert.ToInt32(drHero["dailyAttendRewardDay"]);
+		m_dailyAttendRewardDay.value = SFDBUtil.ToInt32(drHero["dailyAttendRewardDay"]);
 		m_dailyAccessTimeUpdateTime = SFDBUtil.ToDateTimeOffset(drHero["dailyAccessTimeUpdateTime"], DateTimeOffset.MinValue);
-		m_fDailyAccessTime = Convert.ToSingle(drHero["dailyAccessTime"]);
+		m_fDailyAccessTime = SFDBUtil.ToSingle(drHero["dailyAccessTime"]);
 		if (m_dailyAccessTimeUpdateTime.Date != currentTime.Date)
 		{
 			m_fDailyAccessTime = 0f;
 			m_dailyAccessTimeUpdateTime = currentTime;
 		}
 		m_expPotionDailyUseCount.date = SFDBUtil.ToDateTime(drHero["expPotionUseDate"], DateTime.MinValue.Date);
-		m_expPotionDailyUseCount.value = Convert.ToInt32(drHero["expPotionUseCount"]);
+		m_expPotionDailyUseCount.value = SFDBUtil.ToInt32(drHero["expPotionUseCount"]);
 		RefreshExpPotionDailyUseCount(currentDate);
 		m_mountGearRefinementDailyCount.date = SFDBUtil.ToDateTime(drHero["mountGearRefinementDate"], DateTime.MinValue.Date);
-		m_mountGearRefinementDailyCount.value = Convert.ToInt32(drHero["mountGearRefinementCount"]);
+		m_mountGearRefinementDailyCount.value = SFDBUtil.ToInt32(drHero["mountGearRefinementCount"]);
 		RefreshMountGearDailyRefinementCount(currentDate);
-		int nWingStep = Convert.ToInt32(drHero["wingStep"]);
-		int nWingLevel = Convert.ToInt32(drHero["wingLevel"]);
+		int nWingStep = SFDBUtil.ToInt32(drHero["wingStep"]);
+		int nWingLevel = SFDBUtil.ToInt32(drHero["wingLevel"]);
 		m_wingStepLevel = Resource.instance.GetWingStep(nWingStep).GetLevel(nWingLevel);
-		m_nWingExp = Convert.ToInt32(drHero["wingExp"]);
+		m_nWingExp = SFDBUtil.ToInt32(drHero["wingExp"]);
 		m_freeSweepDailyCount.date = SFDBUtil.ToDateTime(drHero["freeSweepDate"], DateTime.MinValue.Date);
-		m_freeSweepDailyCount.value = Convert.ToInt32(drHero["freeSweepCount"]);
+		m_freeSweepDailyCount.value = SFDBUtil.ToInt32(drHero["freeSweepCount"]);
 		RefreshFreeSweepDailyCount(currentDate);
-		m_bIsRiding = Convert.ToBoolean(drHero["isRiding"]);
-		int nMainGearEnchantLevelSetNo = Convert.ToInt32(drHero["mainGearEnchantLevelSetNo"]);
+		m_bIsRiding = SFDBUtil.ToBoolean(drHero["isRiding"]);
+		int nMainGearEnchantLevelSetNo = SFDBUtil.ToInt32(drHero["mainGearEnchantLevelSetNo"]);
 		m_mainGearEnchantLevelSet = Resource.instance.GetMainGearEnchantLevelSet(nMainGearEnchantLevelSetNo);
-		int nSubGearSoulstoneLevelSetNo = Convert.ToInt32(drHero["subGearSoulstoneLevelSetNo"]);
+		int nSubGearSoulstoneLevelSetNo = SFDBUtil.ToInt32(drHero["subGearSoulstoneLevelSetNo"]);
 		m_subGearSoulstoneLevelSet = Resource.instance.GetSubGearSoulstoneLevelSet(nSubGearSoulstoneLevelSetNo);
 		m_expScrollDailyUseCount.date = SFDBUtil.ToDateTime(drHero["expScrollUseDate"], DateTime.MinValue.Date);
-		m_expScrollDailyUseCount.value = Convert.ToInt32(drHero["expScrollUseCount"]);
+		m_expScrollDailyUseCount.value = SFDBUtil.ToInt32(drHero["expScrollUseCount"]);
 		RefreshExpScrollDailyUseCount(currentDate);
 		m_expScrollStartTime = SFDBUtil.ToNullableDateTimeOffset(drHero["expScrollStartTime"]);
-		m_nExpScrollDuration = Convert.ToInt32(drHero["expScrollDuration"]);
-		int nExpScrollItemId = Convert.ToInt32(drHero["expScrollItemId"]);
+		m_nExpScrollDuration = SFDBUtil.ToInt32(drHero["expScrollDuration"]);
+		int nExpScrollItemId = SFDBUtil.ToInt32(drHero["expScrollItemId"]);
 		m_expScrollItem = Resource.instance.GetItem(nExpScrollItemId);
 		m_undergroundMazeDate = SFDBUtil.ToDateTime(drHero["undergroundMazeDate"], DateTime.MinValue.Date);
-		m_fUndergroundMazePlayTime = Convert.ToInt32(drHero["undergroundMazePlayTIme"]);
+		m_fUndergroundMazePlayTime = SFDBUtil.ToInt32(drHero["undergroundMazePlayTIme"]);
 		RefreshUndergroundMazeDailyPlayTime(currentDate);
-		m_nArtifactRoomBestFloor = Convert.ToInt32(drHero["artifactRoomBestFloor"]);
-		m_nArtifactRoomCurrentFloor = Convert.ToInt32(drHero["artifactRoomCurrentFloor"]);
+		m_nArtifactRoomBestFloor = SFDBUtil.ToInt32(drHero["artifactRoomBestFloor"]);
+		m_nArtifactRoomCurrentFloor = SFDBUtil.ToInt32(drHero["artifactRoomCurrentFloor"]);
 		if (m_nArtifactRoomCurrentFloor <= 0)
 		{
 			m_nArtifactRoomCurrentFloor = 1;
 		}
 		m_artifactRoomDailyInitCount.date = SFDBUtil.ToDateTime(drHero["artifactRoomInitDate"], DateTime.MaxValue.Date);
-		m_artifactRoomDailyInitCount.value = Convert.ToInt32(drHero["artifactRoomInitCount"]);
+		m_artifactRoomDailyInitCount.value = SFDBUtil.ToInt32(drHero["artifactRoomInitCount"]);
 		RefreshAartifactRoomDailyInitCount(currentDate);
 		m_artifactRoomSweepStartTime = SFDBUtil.ToNullableDateTimeOffset(drHero["artifactRoomSweepStartTime"]);
 		UpdateArtifactRoomSweepFloor(currentTime, bSendEvent: false);
-		m_nExploitPoint = Convert.ToInt32(drHero["exploitPoint"]);
+		m_nExploitPoint = SFDBUtil.ToInt32(drHero["exploitPoint"]);
 		m_exploitPointUpdateTime = (DateTimeOffset)drHero["exploitPointUpdateTime"];
 		m_dailyExploitPoint.date = SFDBUtil.ToDateTime(drHero["dailyExploitPointDate"], DateTime.MinValue.Date);
-		m_dailyExploitPoint.value = Convert.ToInt32(drHero["dailyExploitPoint"]);
+		m_dailyExploitPoint.value = SFDBUtil.ToInt32(drHero["dailyExploitPoint"]);
 		RefreshDailyExploitPoint(currentDate);
-		int nRankNo = Convert.ToInt32(drHero["rankNo"]);
+		int nRankNo = SFDBUtil.ToInt32(drHero["rankNo"]);
 		if (nRankNo > 0)
 		{
 			m_rank = Resource.instance.GetRank(nRankNo);
@@ -4001,141 +4001,141 @@ public class Hero : Unit
 				throw new Exception("계급이 존재하지 않습니다. nRankNo = " + nRankNo);
 			}
 		}
-		m_nRankRewardReceivedRankNo = Convert.ToInt32(drHero["rankRewardReceivedRankNo"]);
+		m_nRankRewardReceivedRankNo = SFDBUtil.ToInt32(drHero["rankRewardReceivedRankNo"]);
 		m_rankRewardReceivedDate = SFDBUtil.ToDateTime(drHero["rankRewardReceivedDate"], DateTime.MinValue.Date);
 		m_fishingQuestDailyStartCount.date = SFDBUtil.ToDateTime(drHero["fishingQuestDate"], DateTime.MinValue.Date);
-		m_fishingQuestDailyStartCount.value = Convert.ToInt32(drHero["fishingQuestCount"]);
-		int nFishingQuestBaitItemId = Convert.ToInt32(drHero["fishingQuestBaitItemId"]);
+		m_fishingQuestDailyStartCount.value = SFDBUtil.ToInt32(drHero["fishingQuestCount"]);
+		int nFishingQuestBaitItemId = SFDBUtil.ToInt32(drHero["fishingQuestBaitItemId"]);
 		if (nFishingQuestBaitItemId > 0)
 		{
 			FishingQuestBait fishingQuestBait = Resource.instance.fishingQuest.GetBait(nFishingQuestBaitItemId);
-			int nFishingQuestBaitCastingCount = Convert.ToInt32(drHero["fishingQuestCastingCount"]);
+			int nFishingQuestBaitCastingCount = SFDBUtil.ToInt32(drHero["fishingQuestCastingCount"]);
 			m_fishingQuest = new HeroFishingQuest(this, m_fishingQuestDailyStartCount.date, m_fishingQuestDailyStartCount.value, fishingQuestBait, nFishingQuestBaitCastingCount);
 		}
 		RefreshFishingQuestDailyStartCount(currentDate);
 		m_achivementDailyPoint.date = SFDBUtil.ToDateTime(drHero["achievementPointDate"], DateTime.MinValue.Date);
-		m_achivementDailyPoint.value = Convert.ToInt32(drHero["achievementPoint"]);
-		m_nReceivedAchivementRewardNo = Convert.ToInt32(drHero["achievementRewardNo"]);
+		m_achivementDailyPoint.value = SFDBUtil.ToInt32(drHero["achievementPoint"]);
+		m_nReceivedAchivementRewardNo = SFDBUtil.ToInt32(drHero["achievementRewardNo"]);
 		RefreshAchievementDailyPoint(currentDate);
-		m_nRewardedDailyServerLevelRankingNo = Convert.ToInt32(drHero["rewardedDailyServerLevelRankingNo"]);
+		m_nRewardedDailyServerLevelRankingNo = SFDBUtil.ToInt32(drHero["rewardedDailyServerLevelRankingNo"]);
 		m_distortionScrollDailyUseCount.date = SFDBUtil.ToDateTime(drHero["distortionScrollUseDate"], DateTime.MinValue.Date);
-		m_distortionScrollDailyUseCount.value = Convert.ToInt32(drHero["distortionScrollUseCount"]);
+		m_distortionScrollDailyUseCount.value = SFDBUtil.ToInt32(drHero["distortionScrollUseCount"]);
 		RefreshDistortionScrollDailyUseCount(currentDate);
 		m_distortionScrollStartTime = SFDBUtil.ToNullableDateTimeOffset(drHero["distortionScrollStartTime"]);
-		m_nDistortionScrollDuration = Convert.ToInt32(drHero["distortionScrollDuration"]);
+		m_nDistortionScrollDuration = SFDBUtil.ToInt32(drHero["distortionScrollDuration"]);
 		float fRemainingDistortionTime = GetRemainingDistortionTime(currentTime);
 		if (fRemainingDistortionTime > 0f)
 		{
 			StartDistortionTimer((int)(fRemainingDistortionTime * 1000f));
 		}
-		m_bTodayMissionTutorialStarted = Convert.ToBoolean(drHero["todayMissionTutorialStarted"]);
-		m_nRewardedAttainmentEntryNo = Convert.ToInt32(drHero["rewardedAttainmentEntryNo"]);
-		m_nFieldOfHonorRanking = Convert.ToInt32(drHero["fieldOfHonorRanking"]);
-		m_nFieldOfHonorSuccessiveCount = Convert.ToInt32(drHero["fieldOfHonorSuccessiveCount"]);
-		m_nRewardedDailyFieldOfHonorRankingNo = Convert.ToInt32(drHero["rewardedDailyFieldOfHonorRankingNo"]);
+		m_bTodayMissionTutorialStarted = SFDBUtil.ToBoolean(drHero["todayMissionTutorialStarted"]);
+		m_nRewardedAttainmentEntryNo = SFDBUtil.ToInt32(drHero["rewardedAttainmentEntryNo"]);
+		m_nFieldOfHonorRanking = SFDBUtil.ToInt32(drHero["fieldOfHonorRanking"]);
+		m_nFieldOfHonorSuccessiveCount = SFDBUtil.ToInt32(drHero["fieldOfHonorSuccessiveCount"]);
+		m_nRewardedDailyFieldOfHonorRankingNo = SFDBUtil.ToInt32(drHero["rewardedDailyFieldOfHonorRankingNo"]);
 		m_dailyNationDonationCount.date = SFDBUtil.ToDateTime(drHero["nationDonationDate"], DateTime.MinValue.Date);
-		m_dailyNationDonationCount.value = Convert.ToInt32(drHero["nationDonationCount"]);
+		m_dailyNationDonationCount.value = SFDBUtil.ToInt32(drHero["nationDonationCount"]);
 		RefreshDailyNationDonationCount(currentDate);
 		m_dailyNationWarFreeTransmissionCount.date = SFDBUtil.ToDateTime(drHero["nationWarFreeTransmissionDate"], DateTime.MinValue);
-		m_dailyNationWarFreeTransmissionCount.value = Convert.ToInt32(drHero["nationWarFreeTransmissionCount"]);
+		m_dailyNationWarFreeTransmissionCount.value = SFDBUtil.ToInt32(drHero["nationWarFreeTransmissionCount"]);
 		RefreshDailyNationWarFreeTransmissionCount(currentDate);
 		m_dailyNationWarPaidTransmissionCount.date = SFDBUtil.ToDateTime(drHero["nationWarPaidTransmissionDate"], DateTime.MinValue);
-		m_dailyNationWarPaidTransmissionCount.value = Convert.ToInt32(drHero["nationWarPaidTransmissionCount"]);
-		m_nExplorationPoint = Convert.ToInt32(drHero["explorationPoint"]);
-		int nIllustratedBookExplorationStepNo = Convert.ToInt32(drHero["illustratedBookExplorationStepNo"]);
+		m_dailyNationWarPaidTransmissionCount.value = SFDBUtil.ToInt32(drHero["nationWarPaidTransmissionCount"]);
+		m_nExplorationPoint = SFDBUtil.ToInt32(drHero["explorationPoint"]);
+		int nIllustratedBookExplorationStepNo = SFDBUtil.ToInt32(drHero["illustratedBookExplorationStepNo"]);
 		if (nIllustratedBookExplorationStepNo > 0)
 		{
 			m_illustratedBookExplorationStep = Resource.instance.GetIllustratedBookExplorationStep(nIllustratedBookExplorationStepNo);
 		}
 		m_illustratedBookExplorationStepRewardReceivedDate = SFDBUtil.ToDateTime(drHero["illustratedBookExplorationStepRewardReceivedDate"], DateTime.MinValue);
-		m_nIllustratedBookExplorationStepRewardReceivedStepNo = Convert.ToInt32(drHero["illustratedBookExplorationStepRewardReceivedStepNo"]);
+		m_nIllustratedBookExplorationStepRewardReceivedStepNo = SFDBUtil.ToInt32(drHero["illustratedBookExplorationStepRewardReceivedStepNo"]);
 		RefreshDailyNationWarPaidTransmissionCount(currentDate);
-		int nLootingItemMinGrade = Convert.ToInt32(drHero["lootingItemMinGrade"]);
+		int nLootingItemMinGrade = SFDBUtil.ToInt32(drHero["lootingItemMinGrade"]);
 		if (!Enum.IsDefined(typeof(LootingItemMinGrade), nLootingItemMinGrade))
 		{
 			throw new Exception("루팅아이템최소등급이 유효하지 않습니다. nLootingItemMinGrade = " + nLootingItemMinGrade);
 		}
 		m_lootingItemMinGrade = (LootingItemMinGrade)nLootingItemMinGrade;
 		m_dailyProofOfValorFreeRefreshCount.date = SFDBUtil.ToDateTime(drHero["proofOfValorFreeRefreshDate"], DateTime.MinValue);
-		m_dailyProofOfValorFreeRefreshCount.value = Convert.ToInt32(drHero["proofOfValorFreeRefreshCount"]);
+		m_dailyProofOfValorFreeRefreshCount.value = SFDBUtil.ToInt32(drHero["proofOfValorFreeRefreshCount"]);
 		m_dailyProofOfvalorPaidRefreshCount.date = SFDBUtil.ToDateTime(drHero["proofOfValorDailyPaidRefreshDate"]);
-		m_dailyProofOfvalorPaidRefreshCount.value = Convert.ToInt32(drHero["proofOfValorDailyPaidRefreshCount"]);
-		m_nProofOfValorPaidRefreshCount = Convert.ToInt32(drHero["proofOfValorPaidRefreshCount"]);
+		m_dailyProofOfvalorPaidRefreshCount.value = SFDBUtil.ToInt32(drHero["proofOfValorDailyPaidRefreshCount"]);
+		m_nProofOfValorPaidRefreshCount = SFDBUtil.ToInt32(drHero["proofOfValorPaidRefreshCount"]);
 		m_proofOfValorAutoRefreshDate = SFDBUtil.ToDateTime(drHero["proofOfValorAutoRefreshDate"], DateTime.MinValue);
-		m_nProofOfValorAutoRefreshScheduleId = Convert.ToInt32(drHero["proofOfValorAutoRefreshScheduleId"]);
-		m_nCustomPresetHair = Convert.ToInt32(drHero["customPresetHair"]);
-		m_nCustomFaceJawHeight = Convert.ToInt32(drHero["customFaceJawHeight"]);
-		m_nCustomFaceJawWidth = Convert.ToInt32(drHero["customFaceJawWidth"]);
-		m_nCustomFaceJawEndHeight = Convert.ToInt32(drHero["customFaceJawEndHeight"]);
-		m_nCustomFaceWidth = Convert.ToInt32(drHero["customFaceWidth"]);
-		m_nCustomFaceEyebrowHeight = Convert.ToInt32(drHero["customFaceEyebrowHeight"]);
-		m_nCustomFaceEyebrowRotation = Convert.ToInt32(drHero["customFaceEyebrowRotation"]);
-		m_nCustomFaceEyesWidth = Convert.ToInt32(drHero["customFaceEyesWidth"]);
-		m_nCustomFaceNoseHeight = Convert.ToInt32(drHero["customFaceNoseHeight"]);
-		m_nCustomFaceNoseWidth = Convert.ToInt32(drHero["customFaceNoseWidth"]);
-		m_nCustomFaceMouthHeight = Convert.ToInt32(drHero["customFaceMouthHeight"]);
-		m_nCustomFaceMouthWidth = Convert.ToInt32(drHero["customFaceMouthWidth"]);
-		m_nCustomBodyHeadSize = Convert.ToInt32(drHero["customBodyHeadSize"]);
-		m_nCustomBodyArmsLength = Convert.ToInt32(drHero["customBodyArmsLength"]);
-		m_nCustomBodyArmsWidth = Convert.ToInt32(drHero["customBodyArmsWidth"]);
-		m_nCustomBodyChestSize = Convert.ToInt32(drHero["customBodyChestSize"]);
-		m_nCustomBodyWaistWidth = Convert.ToInt32(drHero["customBodyWaistWidth"]);
-		m_nCustomBodyHipsSize = Convert.ToInt32(drHero["customBodyHipsSize"]);
-		m_nCustomBodyPelvisWidth = Convert.ToInt32(drHero["customBodyPelvisWidth"]);
-		m_nCustomBodyLegsLength = Convert.ToInt32(drHero["customBodyLegsLength"]);
-		m_nCustomBodyLegsWidth = Convert.ToInt32(drHero["customBodyLegsWidth"]);
-		m_nCustomColorSkin = Convert.ToInt32(drHero["customColorSkin"]);
-		m_nCustomColorEyes = Convert.ToInt32(drHero["customColorEyes"]);
-		m_nCustomColorBeardAndEyebrow = Convert.ToInt32(drHero["customColorBeardAndEyebrow"]);
-		m_nCustomColorHair = Convert.ToInt32(drHero["customColorHair"]);
+		m_nProofOfValorAutoRefreshScheduleId = SFDBUtil.ToInt32(drHero["proofOfValorAutoRefreshScheduleId"]);
+		m_nCustomPresetHair = SFDBUtil.ToInt32(drHero["customPresetHair"]);
+		m_nCustomFaceJawHeight = SFDBUtil.ToInt32(drHero["customFaceJawHeight"]);
+		m_nCustomFaceJawWidth = SFDBUtil.ToInt32(drHero["customFaceJawWidth"]);
+		m_nCustomFaceJawEndHeight = SFDBUtil.ToInt32(drHero["customFaceJawEndHeight"]);
+		m_nCustomFaceWidth = SFDBUtil.ToInt32(drHero["customFaceWidth"]);
+		m_nCustomFaceEyebrowHeight = SFDBUtil.ToInt32(drHero["customFaceEyebrowHeight"]);
+		m_nCustomFaceEyebrowRotation = SFDBUtil.ToInt32(drHero["customFaceEyebrowRotation"]);
+		m_nCustomFaceEyesWidth = SFDBUtil.ToInt32(drHero["customFaceEyesWidth"]);
+		m_nCustomFaceNoseHeight = SFDBUtil.ToInt32(drHero["customFaceNoseHeight"]);
+		m_nCustomFaceNoseWidth = SFDBUtil.ToInt32(drHero["customFaceNoseWidth"]);
+		m_nCustomFaceMouthHeight = SFDBUtil.ToInt32(drHero["customFaceMouthHeight"]);
+		m_nCustomFaceMouthWidth = SFDBUtil.ToInt32(drHero["customFaceMouthWidth"]);
+		m_nCustomBodyHeadSize = SFDBUtil.ToInt32(drHero["customBodyHeadSize"]);
+		m_nCustomBodyArmsLength = SFDBUtil.ToInt32(drHero["customBodyArmsLength"]);
+		m_nCustomBodyArmsWidth = SFDBUtil.ToInt32(drHero["customBodyArmsWidth"]);
+		m_nCustomBodyChestSize = SFDBUtil.ToInt32(drHero["customBodyChestSize"]);
+		m_nCustomBodyWaistWidth = SFDBUtil.ToInt32(drHero["customBodyWaistWidth"]);
+		m_nCustomBodyHipsSize = SFDBUtil.ToInt32(drHero["customBodyHipsSize"]);
+		m_nCustomBodyPelvisWidth = SFDBUtil.ToInt32(drHero["customBodyPelvisWidth"]);
+		m_nCustomBodyLegsLength = SFDBUtil.ToInt32(drHero["customBodyLegsLength"]);
+		m_nCustomBodyLegsWidth = SFDBUtil.ToInt32(drHero["customBodyLegsWidth"]);
+		m_nCustomColorSkin = SFDBUtil.ToInt32(drHero["customColorSkin"]);
+		m_nCustomColorEyes = SFDBUtil.ToInt32(drHero["customColorEyes"]);
+		m_nCustomColorBeardAndEyebrow = SFDBUtil.ToInt32(drHero["customColorBeardAndEyebrow"]);
+		m_nCustomColorHair = SFDBUtil.ToInt32(drHero["customColorHair"]);
 		m_rankActiveSkillCastingTime = SFDBUtil.ToDateTimeOffset(drHero["rankActiveSkillCastingTime"], DateTimeOffset.MinValue);
-		m_nSpiritStone = Convert.ToInt32(drHero["spiritStone"]);
-		m_bWisdomTempleCleared = Convert.ToBoolean(drHero["wisdomTempleCleared"]);
+		m_nSpiritStone = SFDBUtil.ToInt32(drHero["spiritStone"]);
+		m_bWisdomTempleCleared = SFDBUtil.ToBoolean(drHero["wisdomTempleCleared"]);
 		m_dailyRuinsReclaimFreePlayCount.date = SFDBUtil.ToDateTime(drHero["ruinsReclaimFreePlayDate"], DateTime.MinValue);
-		m_dailyRuinsReclaimFreePlayCount.value = Convert.ToInt32(drHero["ruinsReclaimFreePlayCount"]);
+		m_dailyRuinsReclaimFreePlayCount.value = SFDBUtil.ToInt32(drHero["ruinsReclaimFreePlayCount"]);
 		m_dailyInfiniteWarPlayCount.date = SFDBUtil.ToDateTime(drHero["infiniteWarPlayDate"], DateTime.MinValue);
-		m_dailyInfiniteWarPlayCount.value = Convert.ToInt32(drHero["infiniteWarPlayCount"]);
+		m_dailyInfiniteWarPlayCount.value = SFDBUtil.ToInt32(drHero["infiniteWarPlayCount"]);
 		m_regTime = SFDBUtil.ToDateTimeOffset(drHero["regTime"]);
-		m_nPaidWarehouseSlotCount = Convert.ToInt32(drHero["paidWarehouseSlotCount"]);
+		m_nPaidWarehouseSlotCount = SFDBUtil.ToInt32(drHero["paidWarehouseSlotCount"]);
 		m_dailyFearAltarPlayCount.date = SFDBUtil.ToDateTime(drHero["fearAltarPlayDate"], DateTime.MinValue);
-		m_dailyFearAltarPlayCount.value = Convert.ToInt32(drHero["fearAltarPlayCount"]);
+		m_dailyFearAltarPlayCount.value = SFDBUtil.ToInt32(drHero["fearAltarPlayCount"]);
 		m_weeklyFearAltarHalidomCollectionRewardNo.date = SFDBUtil.ToDateTime(drHero["fearAltarHalidomCollectionRewardWeekStartDate"], DateTime.MinValue);
-		m_weeklyFearAltarHalidomCollectionRewardNo.value = Convert.ToInt32(drHero["fearAltarHalidomCollectionRewardNo"]);
+		m_weeklyFearAltarHalidomCollectionRewardNo.value = SFDBUtil.ToInt32(drHero["fearAltarHalidomCollectionRewardNo"]);
 		m_dailyWarMemoryFreePlayCount.date = SFDBUtil.ToDateTime(drHero["warMemoryFreePlayDate"], DateTime.MinValue);
-		m_dailyWarMemoryFreePlayCount.value = Convert.ToInt32(drHero["warMemoryFreePlayCount"]);
+		m_dailyWarMemoryFreePlayCount.value = SFDBUtil.ToInt32(drHero["warMemoryFreePlayCount"]);
 		m_dailyOsirisRoomPlayCount.date = SFDBUtil.ToDateTime(drHero["osirisRoomPlayDate"], DateTime.MinValue);
-		m_dailyOsirisRoomPlayCount.value = Convert.ToInt32(drHero["osirisRoomPlayCount"]);
+		m_dailyOsirisRoomPlayCount.value = SFDBUtil.ToInt32(drHero["osirisRoomPlayCount"]);
 		m_itemLuckyShopPickDate = SFDBUtil.ToDateTime(drHero["itemLuckyShopPickDate"], DateTime.MinValue.Date);
 		m_itemLuckyShopFreePickTime = SFDBUtil.ToDateTimeOffset(drHero["itemLuckyShopFreePickTime"], DateTimeOffset.MinValue);
-		m_nItemLuckyShopFreePickCount = Convert.ToInt32(drHero["itemLuckyShopFreePickCount"]);
-		m_nItemLuckyShopPick1TimeCount = Convert.ToInt32(drHero["itemLuckyShopPick1TimeCount"]);
-		m_nItemLuckyShopPick5TimeCount = Convert.ToInt32(drHero["itemLuckyShopPick5TimeCount"]);
+		m_nItemLuckyShopFreePickCount = SFDBUtil.ToInt32(drHero["itemLuckyShopFreePickCount"]);
+		m_nItemLuckyShopPick1TimeCount = SFDBUtil.ToInt32(drHero["itemLuckyShopPick1TimeCount"]);
+		m_nItemLuckyShopPick5TimeCount = SFDBUtil.ToInt32(drHero["itemLuckyShopPick5TimeCount"]);
 		m_creatureCardLuckyShopPickDate = SFDBUtil.ToDateTime(drHero["creatureCardLuckyShopPickDate"], DateTime.MinValue.Date);
 		m_creatureCardLuckyShopFreePickTime = SFDBUtil.ToDateTimeOffset(drHero["creatureCardLuckyShopFreePickTime"], DateTimeOffset.MinValue);
-		m_nCreatureCardLuckyShopFreePickCount = Convert.ToInt32(drHero["creatureCardLuckyShopFreePickCount"]);
-		m_nCreatureCardLuckyShopPick1TimeCount = Convert.ToInt32(drHero["creatureCardLuckyShopPick1TimeCount"]);
-		m_nCreatureCardLuckyShopPick5TimeCount = Convert.ToInt32(drHero["creatureCardLuckyShopPick5TimeCount"]);
+		m_nCreatureCardLuckyShopFreePickCount = SFDBUtil.ToInt32(drHero["creatureCardLuckyShopFreePickCount"]);
+		m_nCreatureCardLuckyShopPick1TimeCount = SFDBUtil.ToInt32(drHero["creatureCardLuckyShopPick1TimeCount"]);
+		m_nCreatureCardLuckyShopPick5TimeCount = SFDBUtil.ToInt32(drHero["creatureCardLuckyShopPick5TimeCount"]);
 		RefreshItemLuckyShopPickCount(currentDate);
 		RefreshCreatureCardLuckyShopPickCount(currentDate);
 		m_dailyCreatureVariationCount.date = SFDBUtil.ToDateTime(drHero["creatureVariationDate"], DateTime.MinValue.Date);
-		m_dailyCreatureVariationCount.value = Convert.ToInt32(drHero["creatureVariationCount"]);
+		m_dailyCreatureVariationCount.value = SFDBUtil.ToInt32(drHero["creatureVariationCount"]);
 		RefreshDailyCreatureVariationCount(currentDate);
-		m_bOpen7DayEventRewarded = Convert.ToBoolean(drHero["open7DayEventRewarded"]);
+		m_bOpen7DayEventRewarded = SFDBUtil.ToBoolean(drHero["open7DayEventRewarded"]);
 		m_dailyAnkouTombPlayCount.date = SFDBUtil.ToDateTime(drHero["ankouTombPlayDate"], DateTime.MinValue.Date);
-		m_dailyAnkouTombPlayCount.value = Convert.ToInt32(drHero["ankouTombPlayCount"]);
-		m_nStarEssense = Convert.ToInt32(drHero["starEssense"]);
+		m_dailyAnkouTombPlayCount.value = SFDBUtil.ToInt32(drHero["ankouTombPlayCount"]);
+		m_nStarEssense = SFDBUtil.ToInt32(drHero["starEssense"]);
 		m_dailyStarEssensItemUseCount.date = SFDBUtil.ToDateTime(drHero["starEssenseItemUseDate"], DateTime.MinValue.Date);
-		m_dailyStarEssensItemUseCount.value = Convert.ToInt32(drHero["starEssenseItemUseCount"]);
-		int nCostumeCollectionId = Convert.ToInt32(drHero["costumeCollectionId"]);
+		m_dailyStarEssensItemUseCount.value = SFDBUtil.ToInt32(drHero["starEssenseItemUseCount"]);
+		int nCostumeCollectionId = SFDBUtil.ToInt32(drHero["costumeCollectionId"]);
 		m_costumeCollection = Resource.instance.GetCostumeCollection(nCostumeCollectionId);
-		m_bCostumeCollectionActivated = Convert.ToBoolean(drHero["costumeCollectionActivated"]);
+		m_bCostumeCollectionActivated = SFDBUtil.ToBoolean(drHero["costumeCollectionActivated"]);
 		if (m_costumeCollection == null)
 		{
 			InitCostumeCollection();
 		}
 		m_dailyTradeShipPlayCount.date = SFDBUtil.ToDateTime(drHero["tradeShipPlayDate"], DateTime.MinValue.Date);
-		m_dailyTradeShipPlayCount.value = Convert.ToInt32(drHero["tradeShipPlayCount"]);
-		m_nGMTargetMainQuestNo = Convert.ToInt32(drHero["gmTargetMainQuestNo"]);
+		m_dailyTradeShipPlayCount.value = SFDBUtil.ToInt32(drHero["tradeShipPlayCount"]);
+		m_nGMTargetMainQuestNo = SFDBUtil.ToInt32(drHero["gmTargetMainQuestNo"]);
 	}
 
 	private void CompleteLogIn_HeroMainGears(DateTimeOffset time, DataRowCollection drcHeroMainGears, DataRowCollection drcHeroMainGearOptionAttrs, DataRowCollection drcHeroMainGearRefinements)
@@ -4168,7 +4168,7 @@ public class Hero : Unit
 			{
 				throw new Exception("존재하지 않는 영웅메인장비입니다. heroMainGearId = " + heroMainGearId);
 			}
-			int nTurn = Convert.ToInt32(dr["turn"]);
+			int nTurn = SFDBUtil.ToInt32(dr["turn"]);
 			HeroMainGearRefinement refinement = heroMainGear.GetRefinement(nTurn);
 			if (refinement == null)
 			{
@@ -4193,19 +4193,19 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr3 in drcHeroSubGearSoulstoneSockets)
 		{
-			int nSubGearId2 = Convert.ToInt32(dr3["subGearId"]);
+			int nSubGearId2 = SFDBUtil.ToInt32(dr3["subGearId"]);
 			HeroSubGear gear2 = GetSubGear(nSubGearId2);
 			if (gear2 == null)
 			{
 				throw new Exception("보조장비가 존재하지 않습니다. nSubGearId = " + nSubGearId2);
 			}
-			int nSocketIndex2 = Convert.ToInt32(dr3["socketIndex"]);
+			int nSocketIndex2 = SFDBUtil.ToInt32(dr3["socketIndex"]);
 			HeroSoulstoneSocket socket2 = gear2.GetSoulstoneSocket(nSocketIndex2);
 			if (socket2 == null)
 			{
 				throw new Exception("소울스톤 소켓이 존재하지 않습니다. nSocketIndex = " + nSocketIndex2);
 			}
-			int nItemId2 = Convert.ToInt32(dr3["itemId"]);
+			int nItemId2 = SFDBUtil.ToInt32(dr3["itemId"]);
 			Item item2 = Resource.instance.GetItem(nItemId2);
 			if (item2 == null)
 			{
@@ -4215,19 +4215,19 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr in drcHeroSubGearRuneSockets)
 		{
-			int nSubGearId = Convert.ToInt32(dr["subGearId"]);
+			int nSubGearId = SFDBUtil.ToInt32(dr["subGearId"]);
 			HeroSubGear gear = GetSubGear(nSubGearId);
 			if (gear == null)
 			{
 				throw new Exception("보조장비가 존재하지 않습니다. nSubGearId = " + nSubGearId);
 			}
-			int nSocketIndex = Convert.ToInt32(dr["socketIndex"]);
+			int nSocketIndex = SFDBUtil.ToInt32(dr["socketIndex"]);
 			HeroRuneSocket socket = gear.GetRuneSocket(nSocketIndex);
 			if (socket == null)
 			{
 				throw new Exception("룬 소켓이 존재하지 않습니다. nSocketIndex = " + nSocketIndex);
 			}
-			int nItemId = Convert.ToInt32(dr["itemId"]);
+			int nItemId = SFDBUtil.ToInt32(dr["itemId"]);
 			Item item = Resource.instance.GetItem(nItemId);
 			if (item == null)
 			{
@@ -4311,7 +4311,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr in drcEquippedMountGearSlots)
 		{
-			int nSlotIndex = Convert.ToInt32(dr["slotIndex"]);
+			int nSlotIndex = SFDBUtil.ToInt32(dr["slotIndex"]);
 			Guid heroMountGearId = (Guid)dr["heroMountGearId"];
 			HeroMountGear mountGear = GetMountGear(heroMountGearId);
 			if (mountGear == null)
@@ -4338,7 +4338,7 @@ public class Hero : Unit
 		m_treatOfFarmQuest = quest;
 		foreach (DataRow dr in drcTreatOfFarmQuestMissions)
 		{
-			if (Convert.ToInt32(dr["status"]) == 0)
+			if (SFDBUtil.ToInt32(dr["status"]) == 0)
 			{
 				HeroTreatOfFarmQuestMission newMission = new HeroTreatOfFarmQuestMission(m_treatOfFarmQuest);
 				newMission.Init(dr);
@@ -4431,7 +4431,7 @@ public class Hero : Unit
 		m_dailyHolyWarQuestStartScheduleCollection.date = currentDate;
 		foreach (DataRow dr in drcStartedQuests)
 		{
-			int nScheduleId = Convert.ToInt32(dr["scheduleId"]);
+			int nScheduleId = SFDBUtil.ToInt32(dr["scheduleId"]);
 			m_dailyHolyWarQuestStartScheduleCollection.AddSchedule(nScheduleId);
 		}
 		if (drPerformingQuest != null)
@@ -4452,7 +4452,7 @@ public class Hero : Unit
 			heroQuest.Init(drSupplySupportQuest);
 			foreach (DataRow dr in drcSupplySupportQuestVisitedWayPoint)
 			{
-				int nWayPoint = Convert.ToInt32(dr["wayPoint"]);
+				int nWayPoint = SFDBUtil.ToInt32(dr["wayPoint"]);
 				heroQuest.AddVisitedWayPoint(nWayPoint);
 			}
 			m_supplySupportQuest = heroQuest;
@@ -4486,8 +4486,8 @@ public class Hero : Unit
 		m_todayTaskCollection = new HeroTodayTaskCollection(this, currentDate);
 		foreach (DataRow dr in drcHeroTodayTasks)
 		{
-			int nId = Convert.ToInt32(dr["taskId"]);
-			int nProgressCount = Convert.ToInt32(dr["progressCount"]);
+			int nId = SFDBUtil.ToInt32(dr["taskId"]);
+			int nProgressCount = SFDBUtil.ToInt32(dr["progressCount"]);
 			HeroTodayTask todayTask = new HeroTodayTask(m_todayTaskCollection, Resource.instance.GetTodayTask(nId), nProgressCount);
 			m_todayTaskCollection.AddTodayTask(todayTask);
 		}
@@ -4498,7 +4498,7 @@ public class Hero : Unit
 		m_guildWithdrawalTime = SFDBUtil.ToDateTimeOffset(drHero["guildWithdrawalTime"], DateTimeOffset.MinValue);
 		m_guildDailyRewardReceivedDate = SFDBUtil.ToDateTime(drHero["guildDailyRewardReceivedDate"], DateTime.MinValue.Date);
 		m_dailyGuildDonationCount.date = SFDBUtil.ToDateTime(drHero["guildDonationDate"], DateTime.MinValue.Date);
-		m_dailyGuildDonationCount.value = Convert.ToInt32(drHero["guildDonationCount"]);
+		m_dailyGuildDonationCount.value = SFDBUtil.ToInt32(drHero["guildDonationCount"]);
 		RefreshDailyGuildDonationCount(currentDate);
 		m_guildMember = Cache.instance.GetGuildMember(m_id);
 		if (m_guildMember != null)
@@ -4551,7 +4551,7 @@ public class Hero : Unit
 	private void CompleteLogin_GuildFoodWarehouse(DateTime currentDate, DataRow drHero)
 	{
 		m_dailyGuildFoodWarehouseStockCount.date = SFDBUtil.ToDateTime(drHero["guildFoodWarehouseStockDate"], DateTime.MinValue.Date);
-		m_dailyGuildFoodWarehouseStockCount.value = Convert.ToInt32(drHero["guildFoodWarehouseStockCount"]);
+		m_dailyGuildFoodWarehouseStockCount.value = SFDBUtil.ToInt32(drHero["guildFoodWarehouseStockCount"]);
 		RefreshDailyGuildFoodWarehouseStockCount(currentDate);
 		m_receivedGuildFoodWarehouseCollectionId = (Guid)drHero["receivedGuildFoodWarehouseCollectionId"];
 	}
@@ -4559,7 +4559,7 @@ public class Hero : Unit
 	private void CompleteLogin_GuildAltar(DateTime currentDate, DataRow drHero)
 	{
 		m_guildMoralPoint.date = SFDBUtil.ToDateTime(drHero["guildMoralPointDate"], DateTime.MinValue.Date);
-		m_guildMoralPoint.value = Convert.ToInt32(drHero["guildMoralPoint"]);
+		m_guildMoralPoint.value = SFDBUtil.ToInt32(drHero["guildMoralPoint"]);
 		RefreshGuildMoralPoint(currentDate);
 		m_guildAltarRewardReceivedDate = SFDBUtil.ToDateTime(drHero["guildAltarRewardReceivedDate"], DateTime.MinValue.Date);
 		m_guildAltarDefenseMissionStartTime = SFDBUtil.ToDateTimeOffset(drHero["guildAltarDefenseStartTime"], DateTimeOffset.MinValue);
@@ -4581,7 +4581,7 @@ public class Hero : Unit
 		HeroGuildMissionQuestMission guildMission = null;
 		foreach (DataRow dr in drcHeroGuildMissionQuestMissions)
 		{
-			switch (Convert.ToInt32(dr["status"]))
+			switch (SFDBUtil.ToInt32(dr["status"]))
 			{
 			case 0:
 				guildMission = new HeroGuildMissionQuestMission(m_guildMissionQuest);
@@ -4676,7 +4676,7 @@ public class Hero : Unit
 	{
 		m_guildWeeklyObjectiveRewardReceivedDate = SFDBUtil.ToDateTime(drHero["guildWeeklyObjectiveRewardReceivedDate"], DateTime.MinValue.Date);
 		m_receivedDailyObjectiveRewardNo.date = SFDBUtil.ToDateTime(drHero["guildDailyObjectiveRewardReceivedDate"], DateTime.MinValue.Date);
-		m_receivedDailyObjectiveRewardNo.value = Convert.ToInt32(drHero["guildDailyObjectiveRewardReceivedNo"]);
+		m_receivedDailyObjectiveRewardNo.value = SFDBUtil.ToInt32(drHero["guildDailyObjectiveRewardReceivedNo"]);
 		RefreshGuildDailyObjectiveReceivedReward(date);
 	}
 
@@ -4684,7 +4684,7 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr in drcHeroAccomplishmentRewards)
 		{
-			int nId = Convert.ToInt32(dr["accomplishmentId"]);
+			int nId = SFDBUtil.ToInt32(dr["accomplishmentId"]);
 			AddRewardedAccomplishment(nId);
 			Accomplishment accomplishment = Resource.instance.GetAccomplishment(nId);
 			if (accomplishment != null)
@@ -4692,17 +4692,17 @@ public class Hero : Unit
 				m_nAccomplishmentPoint += accomplishment.point;
 			}
 		}
-		m_nAccMonsterKillCount = Convert.ToInt32(drHero["accMonsterKillCount"]);
-		m_nAccEpicBaitItemUseCount = Convert.ToInt32(drHero["accEpicBaitItemUseCount"]);
-		m_nAccLegendBaitItemUseCount = Convert.ToInt32(drHero["accLegendBaitItemUseCount"]);
-		m_nAccNationWarWinCount = Convert.ToInt32(drHero["accNationWarWinCount"]);
-		m_nAccNationWarKillCount = Convert.ToInt32(drHero["accNationWarKillCount"]);
-		m_nAccNationWarCommanderKillCount = Convert.ToInt32(drHero["accNationWarCommanderKillCount"]);
-		m_nAccNationWarImmediateRevivalCount = Convert.ToInt32(drHero["accNationWarImmediateRevivalCount"]);
-		m_lnMaxGold = Convert.ToInt64(drHero["maxGold"]);
-		m_lnMaxBattlePower = Convert.ToInt64(drHero["maxBattlePower"]);
-		m_nMaxAcquisitionMainGearGrade = Convert.ToInt32(drHero["maxAcquisitionMainGearGrade"]);
-		m_nMaxEquippedMainGearEnchantLevel = Convert.ToInt32(drHero["maxEquippedMainGearEnchantLevel"]);
+		m_nAccMonsterKillCount = SFDBUtil.ToInt32(drHero["accMonsterKillCount"]);
+		m_nAccEpicBaitItemUseCount = SFDBUtil.ToInt32(drHero["accEpicBaitItemUseCount"]);
+		m_nAccLegendBaitItemUseCount = SFDBUtil.ToInt32(drHero["accLegendBaitItemUseCount"]);
+		m_nAccNationWarWinCount = SFDBUtil.ToInt32(drHero["accNationWarWinCount"]);
+		m_nAccNationWarKillCount = SFDBUtil.ToInt32(drHero["accNationWarKillCount"]);
+		m_nAccNationWarCommanderKillCount = SFDBUtil.ToInt32(drHero["accNationWarCommanderKillCount"]);
+		m_nAccNationWarImmediateRevivalCount = SFDBUtil.ToInt32(drHero["accNationWarImmediateRevivalCount"]);
+		m_lnMaxGold = SFDBUtil.ToInt64(drHero["maxGold"]);
+		m_lnMaxBattlePower = SFDBUtil.ToInt64(drHero["maxBattlePower"]);
+		m_nMaxAcquisitionMainGearGrade = SFDBUtil.ToInt32(drHero["maxAcquisitionMainGearGrade"]);
+		m_nMaxEquippedMainGearEnchantLevel = SFDBUtil.ToInt32(drHero["maxEquippedMainGearEnchantLevel"]);
 		m_nAccSoulCoveterPlayCount = nAccSoulCoveterPlayCount;
 	}
 
@@ -4715,9 +4715,9 @@ public class Hero : Unit
 			AddTitle(title);
 			title.Init_LifetimeTimer(time);
 		}
-		int nDisplayTitleId = Convert.ToInt32(drHero["displayTitleId"]);
+		int nDisplayTitleId = SFDBUtil.ToInt32(drHero["displayTitleId"]);
 		HeroTitle displayTitle = (m_displayTitle = GetTitle(nDisplayTitleId));
-		int nActivationTitleId = Convert.ToInt32(drHero["activationTitleId"]);
+		int nActivationTitleId = SFDBUtil.ToInt32(drHero["activationTitleId"]);
 		HeroTitle activationTitle = (m_activationTitle = GetTitle(nActivationTitleId));
 	}
 
@@ -4735,7 +4735,7 @@ public class Hero : Unit
 			collection.Init(dr);
 			AddActivatedCreatureCardCollection(collection);
 		}
-		m_nCreatureCardCollectionFamePoint = Convert.ToInt32(drHero["creatureCardCollectionFamePoint"]);
+		m_nCreatureCardCollectionFamePoint = SFDBUtil.ToInt32(drHero["creatureCardCollectionFamePoint"]);
 		m_creatureCardCollectionFamePointUpdateTime = SFDBUtil.ToDateTimeOffset(drHero["creatureCardCollectionFamePointUpdateTime"], DateTimeOffset.MinValue);
 	}
 
@@ -4743,7 +4743,7 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr in drcHeroCreatureCardShopFixedProducts)
 		{
-			int nProductId = Convert.ToInt32(dr["productId"]);
+			int nProductId = SFDBUtil.ToInt32(dr["productId"]);
 			AddPurchasedCreatureCardShopFixedProduct(nProductId);
 		}
 		foreach (DataRow dr2 in drcHeroCreatureCardShopRandomProducts)
@@ -4753,10 +4753,10 @@ public class Hero : Unit
 			AddCreatureCardShopRandomProduct(product);
 		}
 		m_creatureCardShopRefreshDate = SFDBUtil.ToDateTime(drHero["creatureCardShopRefreshDate"], DateTime.MinValue.Date);
-		m_nCreatureCardShopRefreshScheduleId = Convert.ToInt32(drHero["creatureCardShopRefreshScheduleId"]);
+		m_nCreatureCardShopRefreshScheduleId = SFDBUtil.ToInt32(drHero["creatureCardShopRefreshScheduleId"]);
 		m_creatureCardShopId = (Guid)drHero["creatureCardShopId"];
 		m_dailyCreatureCardShopPaidRefreshCount.date = SFDBUtil.ToDateTime(drHero["creatureCardShopPaidRefreshDate"], DateTime.MinValue.Date);
-		m_dailyCreatureCardShopPaidRefreshCount.value = Convert.ToInt32(drHero["creatureCardShopPaidRefreshCount"]);
+		m_dailyCreatureCardShopPaidRefreshCount.value = SFDBUtil.ToInt32(drHero["creatureCardShopPaidRefreshCount"]);
 		RefreshDailyCreatureCardShopPaidRefreshCount(currentTime.Date);
 		CreatureCardShopRefreshSchedule targetSchedule = null;
 		DateTime targetDate = currentTime.Date;
@@ -4783,14 +4783,14 @@ public class Hero : Unit
 
 	private void CompleteLogIn_Stamina(DataRow drHero, DateTimeOffset currentTime, DateTime currentDate)
 	{
-		m_nStamina = Convert.ToInt32(drHero["stamina"]);
+		m_nStamina = SFDBUtil.ToInt32(drHero["stamina"]);
 		m_staminaUpdateTime = SFDBUtil.ToNullableDateTimeOffset(drHero["staminaUpdateTime"]);
 		AutoRecoveryStamina(currentTime, bSendEvent: false);
 		m_dailyStaminaBuyCount.date = SFDBUtil.ToDateTime(drHero["staminaBuyDate"], DateTime.MinValue.Date);
-		m_dailyStaminaBuyCount.value = Convert.ToInt32(drHero["staminaBuyCount"]);
+		m_dailyStaminaBuyCount.value = SFDBUtil.ToInt32(drHero["staminaBuyCount"]);
 		RefreshDailyStaminaBuyCount(currentTime.Date);
 		m_staminaRecoverySchedule.date = SFDBUtil.ToDateTime(drHero["staminaRecoveryDate"], DateTime.MinValue.Date);
-		m_staminaRecoverySchedule.value = Convert.ToInt32(drHero["staminaRecoveryScheduleId"]);
+		m_staminaRecoverySchedule.value = SFDBUtil.ToInt32(drHero["staminaRecoveryScheduleId"]);
 		StaminaRecoverySchedule targetSchedule = null;
 		DateTime targetDate = currentDate;
 		StaminaRecoverySchedule lastSchedule = Resource.instance.lastStaminaRecoverySchedule;
@@ -4830,7 +4830,7 @@ public class Hero : Unit
 		if (drProofOfValorEnterCountOfDate != null)
 		{
 			m_dailyProofOfValorPlayCount.date = SFDBUtil.ToDateTime(drProofOfValorEnterCountOfDate["date"], DateTime.MinValue);
-			m_dailyProofOfValorPlayCount.value = Convert.ToInt32(drProofOfValorEnterCountOfDate["cnt"]);
+			m_dailyProofOfValorPlayCount.value = SFDBUtil.ToInt32(drProofOfValorEnterCountOfDate["cnt"]);
 		}
 		if (drLastHeroProofOfValorInstance != null)
 		{
@@ -4871,8 +4871,8 @@ public class Hero : Unit
 
 	private void CompleteLogin_RookieGift(DataRow drHero, DateTimeOffset currentTime)
 	{
-		m_nRookieGiftNo = Convert.ToInt32(drHero["rookieGiftNo"]);
-		m_fRookieGiftLoginDuration = Convert.ToSingle(drHero["rookieGiftLoginDuration"]);
+		m_nRookieGiftNo = SFDBUtil.ToInt32(drHero["rookieGiftNo"]);
+		m_fRookieGiftLoginDuration = SFDBUtil.ToSingle(drHero["rookieGiftLoginDuration"]);
 		m_rookieGitfLoginStartTime = currentTime;
 		if (m_nRookieGiftNo <= 0)
 		{
@@ -4887,7 +4887,7 @@ public class Hero : Unit
 	private void CompleteLogin_DailyQuest(DataRow drHero, DateTime currentDate, int nDailyQuestAcceptionCount, DataRowCollection drcHeroDailyQuests)
 	{
 		m_dailyQuestFreeRefreshCount.date = SFDBUtil.ToDateTime(drHero["dailyQuestFreeRefreshDate"], DateTime.MinValue.Date);
-		m_dailyQuestFreeRefreshCount.value = Convert.ToInt32(drHero["dailyQuestFreeRefreshCount"]);
+		m_dailyQuestFreeRefreshCount.value = SFDBUtil.ToInt32(drHero["dailyQuestFreeRefreshCount"]);
 		RefreshDailyQuestFreeRefreshCount(currentDate);
 		m_dailyQuestAcceptionCount.date = currentDate;
 		m_dailyQuestAcceptionCount.value = nDailyQuestAcceptionCount;
@@ -4915,12 +4915,12 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr2 in drcOpen7DayEventMissions)
 		{
-			int nMissionId = Convert.ToInt32(dr2["missionId"]);
+			int nMissionId = SFDBUtil.ToInt32(dr2["missionId"]);
 			AddRewardedOpen7DayEventMission(nMissionId);
 		}
 		foreach (DataRow dr3 in drcOpen7DayEventProducts)
 		{
-			int nProductId = Convert.ToInt32(dr3["productId"]);
+			int nProductId = SFDBUtil.ToInt32(dr3["productId"]);
 			AddPurchasedOpen7DayEventProducts(nProductId);
 		}
 		foreach (DataRow dr in drcOpen7DayEventProgressCounts)
@@ -4987,7 +4987,7 @@ public class Hero : Unit
 		m_limitationGiftDate = date;
 		foreach (DataRow dr in drcLimitationGiftRewards)
 		{
-			int nRewardedScheduleId = Convert.ToInt32(dr["scheduleId"]);
+			int nRewardedScheduleId = SFDBUtil.ToInt32(dr["scheduleId"]);
 			m_rewardedLimitationGiftScheduleIds.Add(nRewardedScheduleId);
 		}
 	}
@@ -5007,13 +5007,13 @@ public class Hero : Unit
 		CreateWarehouseSlots(Resource.instance.freeWarehouseSlotCount + m_nPaidWarehouseSlotCount);
 		foreach (DataRow dr in drcWarehouseSlots)
 		{
-			int nSlotIndex = Convert.ToInt32(dr["slotIndex"]);
+			int nSlotIndex = SFDBUtil.ToInt32(dr["slotIndex"]);
 			WarehouseSlot slot = GetWarehouseSlot(nSlotIndex);
 			if (slot == null)
 			{
 				throw new Exception("존재하지않는 창고 슬롯입니다. nSlotIndex = " + nSlotIndex);
 			}
-			int nType = Convert.ToInt32(dr["slotType"]);
+			int nType = SFDBUtil.ToInt32(dr["slotType"]);
 			switch (nType)
 			{
 			case 1:
@@ -5029,7 +5029,7 @@ public class Hero : Unit
 			}
 			case 2:
 			{
-				int nSubGearId = Convert.ToInt32(dr["subGearId"]);
+				int nSubGearId = SFDBUtil.ToInt32(dr["subGearId"]);
 				HeroSubGear subGear = GetSubGear(nSubGearId);
 				if (subGear == null)
 				{
@@ -5040,9 +5040,9 @@ public class Hero : Unit
 			}
 			case 3:
 			{
-				int nItemId = Convert.ToInt32(dr["itemId"]);
-				bool bOwned = Convert.ToBoolean(dr["itemOwned"]);
-				int nCount = Convert.ToInt32(dr["itemCount"]);
+				int nItemId = SFDBUtil.ToInt32(dr["itemId"]);
+				bool bOwned = SFDBUtil.ToBoolean(dr["itemOwned"]);
+				int nCount = SFDBUtil.ToInt32(dr["itemCount"]);
 				Item item = Resource.instance.GetItem(nItemId);
 				HeroWarehouseItem heroWarehouseItem = GetOrCreateWarehouseItem(item);
 				ItemWarehouseObject itemWarehouseObject = new ItemWarehouseObject(heroWarehouseItem, bOwned, nCount);
@@ -5106,10 +5106,10 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr in drcWingMemoryPieceSlots)
 		{
-			int nWingId = Convert.ToInt32(dr["wingId"]);
+			int nWingId = SFDBUtil.ToInt32(dr["wingId"]);
 			HeroWing heroWing2 = GetWing(nWingId);
-			int nIndex = Convert.ToInt32(dr["slotIndex"]);
-			int nAccAttrValue = Convert.ToInt32(dr["accAttrValue"]);
+			int nIndex = SFDBUtil.ToInt32(dr["slotIndex"]);
+			int nAccAttrValue = SFDBUtil.ToInt32(dr["accAttrValue"]);
 			HeroWingMemoryPieceSlot slot = heroWing2.GetMemoryPieceSlot(nIndex);
 			slot.IncreaseAccAttrValue(nAccAttrValue);
 		}
@@ -5142,8 +5142,8 @@ public class Hero : Unit
 		m_ordealQuest.Init(drOrdealQuest);
 		foreach (DataRow dr in drcOrdealQuestMissions)
 		{
-			int nIndex = Convert.ToInt32(dr["slotIndex"]);
-			if (!Convert.ToBoolean(dr["completed"]))
+			int nIndex = SFDBUtil.ToInt32(dr["slotIndex"]);
+			if (!SFDBUtil.ToBoolean(dr["completed"]))
 			{
 				HeroOrdealQuestSlot slot = m_ordealQuest.GetSlot(nIndex);
 				slot.Init(dr);
@@ -5201,7 +5201,7 @@ public class Hero : Unit
 		}
 		foreach (DataRow dr in heroBiographyQuests)
 		{
-			int nBiographyId = Convert.ToInt32(dr["biographyId"]);
+			int nBiographyId = SFDBUtil.ToInt32(dr["biographyId"]);
 			HeroBiography biography = GetBiography(nBiographyId);
 			HeroBiographyQuest quest = new HeroBiographyQuest(biography);
 			quest.Init(dr);
@@ -5280,20 +5280,20 @@ public class Hero : Unit
 
 	private void CompleteLogIn_Present(DataRow drHero, DataRow drWeeklyPresentPopularityPoint, DataRow drWeeklyPresentContributionPoint, DateTimeOffset currentTime)
 	{
-		m_nRewardedNationWeeklyPresentPopularityPointRankingNo = Convert.ToInt32(drHero["rewardedNationWeeklyPresentPopularityPointRankingNo"]);
-		m_nRewardedNationWeeklyPresentContributionPointRankingNo = Convert.ToInt32(drHero["rewardedNationWeeklyPresentContributionPointRankingNo"]);
+		m_nRewardedNationWeeklyPresentPopularityPointRankingNo = SFDBUtil.ToInt32(drHero["rewardedNationWeeklyPresentPopularityPointRankingNo"]);
+		m_nRewardedNationWeeklyPresentContributionPointRankingNo = SFDBUtil.ToInt32(drHero["rewardedNationWeeklyPresentContributionPointRankingNo"]);
 		DateTime currentWeekStartDate = DateTimeUtil.GetWeekStartDate(currentTime);
 		if (drWeeklyPresentPopularityPoint != null)
 		{
-			m_weeklyPresentPopularityPointStartDate = Convert.ToDateTime(drWeeklyPresentPopularityPoint["weekStartDate"]);
-			m_nWeeklyPresentPopularityPoint = Convert.ToInt32(drWeeklyPresentPopularityPoint["point"]);
+			m_weeklyPresentPopularityPointStartDate = SFDBUtil.ToDateTime(drWeeklyPresentPopularityPoint["weekStartDate"]);
+			m_nWeeklyPresentPopularityPoint = SFDBUtil.ToInt32(drWeeklyPresentPopularityPoint["point"]);
 			m_weeklyPresentPopularityPointUpdateTime = (DateTimeOffset)drWeeklyPresentPopularityPoint["pointUpdateTime"];
 		}
 		RefreshWeeklyPresentPopularityPoint(currentWeekStartDate);
 		if (drWeeklyPresentContributionPoint != null)
 		{
-			m_weeklyPresentContributionPointStartDate = Convert.ToDateTime(drWeeklyPresentContributionPoint["weekStartDate"]);
-			m_nWeeklyPresentContributionPoint = Convert.ToInt32(drWeeklyPresentContributionPoint["point"]);
+			m_weeklyPresentContributionPointStartDate = SFDBUtil.ToDateTime(drWeeklyPresentContributionPoint["weekStartDate"]);
+			m_nWeeklyPresentContributionPoint = SFDBUtil.ToInt32(drWeeklyPresentContributionPoint["point"]);
 			m_weeklyPresentContributionPointUpdateTime = (DateTimeOffset)drWeeklyPresentContributionPoint["pointUpdateTime"];
 		}
 		RefreshWeeklyPresentContributionPoint(currentWeekStartDate);
@@ -5307,7 +5307,7 @@ public class Hero : Unit
 			heroCostume.Init(dr);
 			AddCostume(heroCostume);
 		}
-		int nEquippedCostumeId = Convert.ToInt32(drHero["equippedCostumeId"]);
+		int nEquippedCostumeId = SFDBUtil.ToInt32(drHero["equippedCostumeId"]);
 		if (nEquippedCostumeId > 0)
 		{
 			m_equippedCostume = GetCostume(nEquippedCostumeId);
@@ -5438,7 +5438,7 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr in drcConstellation)
 		{
-			int nConstellationId = Convert.ToInt32(dr["constellationId"]);
+			int nConstellationId = SFDBUtil.ToInt32(dr["constellationId"]);
 			Constellation constellation = Resource.instance.GetConstellation(nConstellationId);
 			HeroConstellation heroConstellation = GetConstellation(nConstellationId);
 			if (heroConstellation == null)
@@ -5446,7 +5446,7 @@ public class Hero : Unit
 				heroConstellation = new HeroConstellation(this, nConstellationId);
 				m_constellations.Add(heroConstellation.id, heroConstellation);
 			}
-			int nStep = Convert.ToInt32(dr["step"]);
+			int nStep = SFDBUtil.ToInt32(dr["step"]);
 			constellation.GetStep(nStep);
 			HeroConstellationStep heroStep = heroConstellation.GetStep(nStep);
 			if (heroStep == null)
@@ -5460,10 +5460,10 @@ public class Hero : Unit
 
 	private void CompleteLogIn_Artifact(DataRow drHero)
 	{
-		m_nArtifactNo = Convert.ToInt32(drHero["artifactNo"]);
-		m_nArtifactLevel = Convert.ToInt32(drHero["artifactLevel"]);
-		m_nArtifactExp = Convert.ToInt32(drHero["artifactExp"]);
-		m_nEquippedArtifactNo = Convert.ToInt32(drHero["equippedArtifactNo"]);
+		m_nArtifactNo = SFDBUtil.ToInt32(drHero["artifactNo"]);
+		m_nArtifactLevel = SFDBUtil.ToInt32(drHero["artifactLevel"]);
+		m_nArtifactExp = SFDBUtil.ToInt32(drHero["artifactExp"]);
+		m_nEquippedArtifactNo = SFDBUtil.ToInt32(drHero["equippedArtifactNo"]);
 	}
 
 	private void CompleteLogin_TradeShip(DataRowCollection drcHeroTradeShipBestRecords)
@@ -5485,7 +5485,7 @@ public class Hero : Unit
 	{
 		foreach (DataRow dr in drcTimeDesignationEvent)
 		{
-			int nEventId = Convert.ToInt32(dr["eventId"]);
+			int nEventId = SFDBUtil.ToInt32(dr["eventId"]);
 			AddTimeDesignationEventReward(nEventId);
 		}
 		List<TimeDesignationEvent> timeDesignationEvents = new List<TimeDesignationEvent>();

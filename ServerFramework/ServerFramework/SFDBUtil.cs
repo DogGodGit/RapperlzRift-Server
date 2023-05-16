@@ -296,4 +296,27 @@ public static class SFDBUtil
 		}
 		return (DateTimeOffset?)value;
 	}
+
+    public static bool ToBoolean(object value, bool valueForDBNull)
+    {
+        if (value == DBNull.Value)
+        {
+            return valueForDBNull;
+        }
+        return Convert.ToBoolean(value);
+    }
+
+    public static bool ToBoolean(object value)
+    {
+        return ToBoolean(value, false);
+    }
+
+    public static bool? ToNullableBoolean(object value)
+    {
+        if (value == DBNull.Value)
+        {
+            return null;
+        }
+        return Convert.ToBoolean(value);
+    }
 }
