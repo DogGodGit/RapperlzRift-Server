@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClientCommon\ClientCommon.csproj" />
+    <ProjectReference Include="..\ServerFramework\ServerFramework.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExitGames.Logging.Log4Net">
@@ -27,9 +28,6 @@
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="ServerFramework">
-      <HintPath>..\..\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\ServerFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="Photon.SocketServer">
@@ -45,10 +43,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="GameServer.dll.config">
+    <None Update="GameServer.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

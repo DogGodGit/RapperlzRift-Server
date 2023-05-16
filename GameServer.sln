@@ -13,7 +13,7 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "PhotonSocketServer", "..\Ph
 		Executable = E:\Code\0RappelzRift\PhotonServer\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\bin_Win64\PhotonSocketServer.exe
 		RemoteMachine = EBEST
 		StartingDirectory = E:\Code\0RappelzRift\RapperlzRift-Server\bin
-		Arguments = /debug GameServer_1 /config App.config
+		Arguments = /debug GameServer_1 /config GameServer.config
 		Environment = 默认值
 		LaunchingEngine = fb0d4648-f776-4980-95f8-bb7f36ebc1ee
 		UseLegacyDebugEngines = No
@@ -21,6 +21,8 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "PhotonSocketServer", "..\Ph
 		AttachLaunchAction = No
 		IORedirection = Auto
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerFramework", "ServerFramework\ServerFramework.csproj", "{E1E81E03-7484-453F-B413-0D9F5906A66E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,14 @@ Global
 		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Debug|x64.ActiveCfg = Release|x64
 		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Release|Any CPU.ActiveCfg = Release|x64
 		{177F1B75-1AA9-43AA-BA57-C02BBA510E8B}.Release|x64.ActiveCfg = Release|x64
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Debug|x64.Build.0 = Debug|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1E81E03-7484-453F-B413-0D9F5906A66E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

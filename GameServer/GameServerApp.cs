@@ -1,6 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.Resources;
 using System.Threading;
 using GameServer.CommandHandlers;
 using Photon.SocketServer;
@@ -50,7 +52,7 @@ public class GameServerApp : SFApplication
 		WorkLogManager.instance.Init();
 		m_workQueueLogTimer = new Timer(OnWorkQueueLogTimerTick);
 		m_workQueueLogTimer.Change(1000, 1000);
-		lock (Global.syncObject)
+        lock (Global.syncObject)
 		{
 			Cache.instance.Init();
 		}
@@ -134,7 +136,14 @@ public class GameServerApp : SFApplication
 		}
 	}
 
-	protected override void OnTearDown()
+    protected override void TearDown()
+    {
+        CultureInfo ciLang = new CultureInfo(AppConfigUtil.LanguagesKey);
+        SFUtil.SetLanguage(ciLang);
+        base.TearDown();
+    }
+
+    protected override void OnTearDown()
 	{
 		lock (Global.syncObject)
 		{

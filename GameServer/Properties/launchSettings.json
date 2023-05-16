@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "GameServer": {
+      "commandName": "Project",
+      "commandLineArgs": "PhotonSocketServer",
+      "workingDirectory": "..\\..\\bin",
+      "remoteDebugEnabled": false,
+      "nativeDebugging": false
+    }
+  }
+}

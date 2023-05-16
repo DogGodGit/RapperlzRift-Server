@@ -8,9 +8,13 @@ public static class AppConfigUtil
 
 	public const string kSettingKey_HashKey = "HashKey";
 
-	public static string hashKey => GetSetting("HashKey");
+    public const string kLanguagesKey = "Languages";
 
-	public static string userDBConnectionString => GetConnectionString("RappelzRift_User");
+    public static string hashKey => GetSetting("HashKey");
+
+    public static string LanguagesKey => GetSetting("Languages");
+
+    public static string userDBConnectionString => GetConnectionString("RappelzRift_User");
 
 	public static string GetSetting(string sKey)
 	{
