@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Resource_LoadUserDBResources_01" xml:space="preserve">
+    <value>系统设置不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_02" xml:space="preserve">
+    <value>默认语言不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_03" xml:space="preserve">
+    <value>游戏配置不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_04" xml:space="preserve">
+    <value>起始大陆ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_05" xml:space="preserve">
+    <value>安全复活大陆ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_06" xml:space="preserve">
+    <value>简易商店销售插槽数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_07" xml:space="preserve">
+    <value>周末签到奖励物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_08" xml:space="preserve">
+    <value>今天的任务计数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_09" xml:space="preserve">
+    <value>主设备映射选项的最小数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_10" xml:space="preserve">
+    <value>主张映射选项的最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_100" xml:space="preserve">
+    <value>生物附加属性数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_101" xml:space="preserve">
+    <value>生物技能槽最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_102" xml:space="preserve">
+    <value>生物技能默认开启次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_103" xml:space="preserve">
+    <value>生物合成技能保护道具ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_104" xml:space="preserve">
+    <value>生物注入经验回收率无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_105" xml:space="preserve">
+    <value>需要生物变异的物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_106" xml:space="preserve">
+    <value>生物追加转换结果显示物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_107" xml:space="preserve">
+    <value>生物放生经验值无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_108" xml:space="preserve">
+    <value>开启7日活动服装奖励所需物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_109" xml:space="preserve">
+    <value>开启7日活动服装需要奖励的物品数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_11" xml:space="preserve">
+    <value>主装备精炼物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_110" xml:space="preserve">
+    <value>国家不结盟开始时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_111" xml:space="preserve">
+    <value>国家联盟终止时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_112" xml:space="preserve">
+    <value>不可结盟开始时间高于或等于不可结盟结束时间。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_113" xml:space="preserve">
+    <value>国家联盟所需资金无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_114" xml:space="preserve">
+    <value>无法撕毁国家联盟的期限无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_115" xml:space="preserve">
+    <value>国家初期国力无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_116" xml:space="preserve">
+    <value>前任任务要求英雄等级无效。m</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_117" xml:space="preserve">
+    <value>前任任务要求物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_118" xml:space="preserve">
+    <value>服装收藏激活物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_119" xml:space="preserve">
+    <value>服装收藏Shuffle物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_12" xml:space="preserve">
+    <value>主设备拆卸插槽数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_120" xml:space="preserve">
+    <value>服装收藏褶皱物品数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_121" xml:space="preserve">
+    <value>禁用语类型无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_122" xml:space="preserve">
+    <value>[物品列表]物品类型不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_123" xml:space="preserve">
+    <value>[物品相关]不存在生物食物类型的物品。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_124" xml:space="preserve">
+    <value>[物品相关]生物整数类型的物品不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_125" xml:space="preserve">
+    <value>[游戏配置]坐骑升级道具不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_126" xml:space="preserve">
+    <value>[游戏配置]坐骑觉醒道具不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_127" xml:space="preserve">
+    <value>[游戏配置]副本扫荡道具不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_128" xml:space="preserve">
+    <value>[游戏配置]该物品不是扫荡物品类型。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_129" xml:space="preserve">
+    <value>[游戏配置]公会猎人捐赠物品不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_13" xml:space="preserve">
+    <value>队伍成员最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_130" xml:space="preserve">
+    <value>[游戏配置]服装强化道具不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_131" xml:space="preserve">
+    <value>[游戏配置]公会猎人捐赠道具奖励不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_132" xml:space="preserve">
+    <value>[游戏配置]公会猎人捐赠物品完成奖励不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_133" xml:space="preserve">
+    <value>[游戏配置]开启7日不存在活动服装道具奖励。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_134" xml:space="preserve">
+    <value>不存在“状态异常级别列表”状态异常。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_135" xml:space="preserve">
+    <value>“状态异常级别列表”状态异常源类型无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_136" xml:space="preserve">
+    <value>[状态以上等级列表]不存在职业。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_137" xml:space="preserve">
+    <value>[状态异常等级技能等级列表]不存在状态异常。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_138" xml:space="preserve">
+    <value>[状态异常等级技能等级列表]状态异常源类型无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_139" xml:space="preserve">
+    <value>[职业技能等级大师列表]不存在职业技能大师。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_14" xml:space="preserve">
+    <value>队伍成员注销时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_140" xml:space="preserve">
+    <value>[职业技能列表]不存在职业技能大师。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_141" xml:space="preserve">
+    <value>[职业技能列表]不存在职业</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_142" xml:space="preserve">
+    <value>[职业技能等级列表]职业不存在。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_143" xml:space="preserve">
+    <value>[职业技能等级列表]不存在职业技能。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_144" xml:space="preserve">
+    <value>[职业技能等级列表]不存在职业技能等级大师。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_145" xml:space="preserve">
+    <value>[职业技能命中列表]不存在职业</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_146" xml:space="preserve">
+    <value>[职业技能命中列表]不存在职业技能</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_147" xml:space="preserve">
+    <value>[职业相关技能命中状态异常列表]不存在职业</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_148" xml:space="preserve">
+    <value>[职业联系技能命中状态异常列表]不存在职业技能</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_149" xml:space="preserve">
+    <value>[职业联系技能命中状态异常列表]不存在职业技能命中。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_15" xml:space="preserve">
+    <value>派对邀请生命周期无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_150" xml:space="preserve">
+    <value>[职业联系技能列表]不存在职业</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_151" xml:space="preserve">
+    <value>[职业联系技能列表]不存在职业技能。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_152" xml:space="preserve">
+    <value>[职业联系技能命中列表]不存在职业</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_16" xml:space="preserve">
+    <value>申请加入队伍生命周期无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_17" xml:space="preserve">
+    <value>召集队伍的冷却时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_18" xml:space="preserve">
+    <value>需要休息奖励的英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_19" xml:space="preserve">
+    <value>黄金休息奖励比例无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_20" xml:space="preserve">
+    <value>钻石休息奖励比例无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_21" xml:space="preserve">
+    <value>聊天最大长度无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_22" xml:space="preserve">
+    <value>聊天最小间隔无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_23" xml:space="preserve">
+    <value>世界聊天项目ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_24" xml:space="preserve">
+    <value>坐骑提品要求升级数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_25" xml:space="preserve">
+    <value>装备的坐骑属性值无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_26" xml:space="preserve">
+    <value>坐骑装备选项属性数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_27" xml:space="preserve">
+    <value>坐骑装备精炼物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_28" xml:space="preserve">
+    <value>坐骑觉醒需要英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_29" xml:space="preserve">
+    <value>坐骑姿势属性物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_30" xml:space="preserve">
+    <value>翅膀强化物品ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_31" xml:space="preserve">
+    <value>翅膀强化经验值无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_32" xml:space="preserve">
+    <value>翅膀显示的最低VIP等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_33" xml:space="preserve">
+    <value>最大体力无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_34" xml:space="preserve">
+    <value>体力恢复时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_35" xml:space="preserve">
+    <value>购物车的一般速度无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_36" xml:space="preserve">
+    <value>购物车速度无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_37" xml:space="preserve">
+    <value>购物车持续时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_38" xml:space="preserve">
+    <value>购物车高速续航时间扩展无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_39" xml:space="preserve">
+    <value>购物车加速冷却时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_40" xml:space="preserve">
+    <value>购物车的属性成功率无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_41" xml:space="preserve">
+    <value>PVP最低英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_42" xml:space="preserve">
+    <value>世界级经验增益法术最低英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_43" xml:space="preserve">
+    <value>悬赏金猎人任务最大次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_44" xml:space="preserve">
+    <value>显示排名的最大计数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_45" xml:space="preserve">
+    <value>显示行会排名的最大计数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_46" xml:space="preserve">
+    <value>显示礼包人气分数排名的最大计数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_47" xml:space="preserve">
+    <value>显示礼包贡献分数排名的最大计数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_48" xml:space="preserve">
+    <value>行会要求英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_49" xml:space="preserve">
+    <value>公会生成要求VIP等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_50" xml:space="preserve">
+    <value>行会生成要求钻石无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_51" xml:space="preserve">
+    <value>重新加入行会的间隔时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_52" xml:space="preserve">
+    <value>接受加入行会申请的最大次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_53" xml:space="preserve">
+    <value>行会每日申请最大次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_54" xml:space="preserve">
+    <value>行会每日驱逐最大次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_55" xml:space="preserve">
+    <value>行会邀请生命周期无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_56" xml:space="preserve">
+    <value>行会通知最大长度无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_57" xml:space="preserve">
+    <value>行会副行会长寿无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_58" xml:space="preserve">
+    <value>行会加载数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_59" xml:space="preserve">
+    <value>行会召集生命周期无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_60" xml:space="preserve">
+    <value>行会召集半径无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_61" xml:space="preserve">
+    <value>行会每日目标通知冷却时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_62" xml:space="preserve">
+    <value>默认行会周目标ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_63" xml:space="preserve">
+    <value>行会猎人捐赠最大次数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_64" xml:space="preserve">
+    <value>等级开放主线任务编号无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_65" xml:space="preserve">
+    <value>翅膀开放英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_66" xml:space="preserve">
+    <value>翅膀开放支付翅膀ID无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_67" xml:space="preserve">
+    <value>国家集合生命周期时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_68" xml:space="preserve">
+    <value>国家召集半径无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_69" xml:space="preserve">
+    <value>国家战怪物战斗模式维持时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_70" xml:space="preserve">
+    <value>生物卡商店随机商品数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_71" xml:space="preserve">
+    <value>生物卡商店付费续订钻石无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_72" xml:space="preserve">
+    <value>需要加速移动持续时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_73" xml:space="preserve">
+    <value>加速移动速度无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_74" xml:space="preserve">
+    <value>风光任务所需主线任务编号无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_75" xml:space="preserve">
+    <value>怪物形态维持时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_76" xml:space="preserve">
+    <value>偷怪维持时间无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_77" xml:space="preserve">
+    <value>开放礼包要求英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_78" xml:space="preserve">
+    <value>需要开启7天活动的主任务编号无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_79" xml:space="preserve">
+    <value>悬赏金猎人任务要求英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_80" xml:space="preserve">
+    <value>需要委托的工作VIP等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_81" xml:space="preserve">
+    <value>精英怪物击杀需要适用英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_82" xml:space="preserve">
+    <value>仓库所需VIP等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_83" xml:space="preserve">
+    <value>免费仓库插槽数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_84" xml:space="preserve">
+    <value>需要安装翅膀记忆碎片的英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_85" xml:space="preserve">
+    <value>试炼任务槽数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_86" xml:space="preserve">
+    <value>好友最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_87" xml:space="preserve">
+    <value>临时朋友的最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_88" xml:space="preserve">
+    <value>死亡记录最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_89" xml:space="preserve">
+    <value>黑名单项目的最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_90" xml:space="preserve">
+    <value>祝福任务列表最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_91" xml:space="preserve">
+    <value>需要祝福任务的英雄等级无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_92" xml:space="preserve">
+    <value>祝福列表最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_93" xml:space="preserve">
+    <value>拥有潜力者任务列表最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_95" xml:space="preserve">
+    <value>目标有为者任务列表最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_96" xml:space="preserve">
+    <value>生物最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_97" xml:space="preserve">
+    <value>生物欢呼的最大数量无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_98" xml:space="preserve">
+    <value>生物欢呼属性系数无效。</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_99" xml:space="preserve">
+    <value>生物评分系数无效。</value>
+  </data>
+</root>

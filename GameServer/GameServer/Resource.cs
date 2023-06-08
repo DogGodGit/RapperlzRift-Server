@@ -10,7 +10,9 @@ namespace GameServer;
 
 public class Resource
 {
-	public const int kYRotationType_Fixed = 1;
+    #region Properties
+
+    public const int kYRotationType_Fixed = 1;
 
 	public const int kYRotationType_Random = 2;
 
@@ -26,7 +28,11 @@ public class Resource
 
 	public const int kHeroSearchMinNameLength = 2;
 
-	private int m_nSectorSize = 20;
+    #endregion
+
+    #region Fields
+
+    private int m_nSectorSize = 20;
 
 	private Dictionary<int, Language> m_languages = new Dictionary<int, Language>();
 
@@ -840,7 +846,11 @@ public class Resource
 
 	private static Resource s_instance = new Resource();
 
-	public int sectorSize => m_nSectorSize;
+    #endregion
+
+    #region Properties
+
+    public int sectorSize => m_nSectorSize;
 
 	public Language defaultLanguage => m_defaultLanguage;
 
@@ -1368,7 +1378,9 @@ public class Resource
 
 	public static Resource instance => s_instance;
 
-	private Resource()
+    #endregion
+
+    private Resource()
 	{
 	}
 
@@ -1405,7 +1417,7 @@ public class Resource
 			DataRow drSystemSetting = UserDac.SystemSetting(conn, null);
 			if (drSystemSetting == null)
 			{
-				throw new Exception("시스템설정이 존재하지 않습니다.");
+				throw new Exception(Resources.Exception.Resource_LoadUserDBResources_01);
 			}
 			m_heroNameRegex = new Regex(Convert.ToString(drSystemSetting["heroNameRegex"]));
 			m_guildNameRegex = new Regex(Convert.ToString(drSystemSetting["guildNameRegex"]));
@@ -1414,18 +1426,18 @@ public class Resource
 			m_defaultLanguage = GetLanguage(nDefaultLanguageId);
 			if (m_defaultLanguage == null)
 			{
-				throw new Exception("기본언어가 존재하지 않습니다. nDefaultLanguageId = " + nDefaultLanguageId);
+				throw new Exception(Resources.Exception.Resource_LoadUserDBResources_02 + " nDefaultLanguageId = " + nDefaultLanguageId);
 			}
 			DataRow drGameConfig = UserDac.GameConfig(conn, null);
 			if (drGameConfig == null)
 			{
-				throw new Exception("게임구성이 존재하지 않습니다.");
+				throw new Exception(Resources.Exception.Resource_LoadUserDBResources_03);
 			}
 			m_nMaxHeroCount = Convert.ToInt32(drGameConfig["maxHeroCount"]);
 			m_nStartContinentId = Convert.ToInt32(drGameConfig["startContinentId"]);
 			if (m_nStartContinentId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "시작대륙ID가 유효하지 않습니다. m_nStartContinentId = " + m_nStartContinentId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_04 + "m_nStartContinentId = " + m_nStartContinentId);
 			}
 			m_startPosition.x = Convert.ToSingle(drGameConfig["startXPosition"]);
 			m_startPosition.y = Convert.ToSingle(drGameConfig["startYPosition"]);
@@ -1448,7 +1460,7 @@ public class Resource
 			m_nSaftyRevivalContinentId = Convert.ToInt32(drGameConfig["saftyRevivalContinentId"]);
 			if (m_nSaftyRevivalContinentId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "안전부활대륙ID가 유효하지 않습니다. m_nSaftyRevivalContinentId = " + m_nSaftyRevivalContinentId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_05 + "m_nSaftyRevivalContinentId = " + m_nSaftyRevivalContinentId);
 			}
 			m_saftyRevivalPosition.x = Convert.ToSingle(drGameConfig["saftyRevivalXPosition"]);
 			m_saftyRevivalPosition.y = Convert.ToSingle(drGameConfig["saftyRevivalYPosition"]);
@@ -1459,191 +1471,191 @@ public class Resource
 			m_nSimpleShopSellSlotCount = Convert.ToInt32(drGameConfig["simpleShopSellSlotCount"]);
 			if (m_nSimpleShopSellSlotCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "간이상점판매 슬롯 갯수가 유효하지 않습니다. m_nSimpleShopSellSlotCount = " + m_nSimpleShopSellSlotCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_06 + "m_nSimpleShopSellSlotCount = " + m_nSimpleShopSellSlotCount);
 			}
 			m_lnWeekendAttendItemRewardId = Convert.ToInt64(drGameConfig["weekendAttendItemRewardId"]);
 			if (m_lnWeekendAttendItemRewardId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "주말출석보상아이템 ID가 유효하지 않습니다. m_lnWeekendAttendItemRewardId = " + m_lnWeekendAttendItemRewardId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_07 + "m_lnWeekendAttendItemRewardId = " + m_lnWeekendAttendItemRewardId);
 			}
 			m_nTodayMissionCount = Convert.ToInt32(drGameConfig["todayMissionCount"]);
 			if (m_nTodayMissionCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "오늘의미션 카운트가 유효하지 않습니다. m_nTodayMissionCount = " + m_nTodayMissionCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_08 + "m_nTodayMissionCount = " + m_nTodayMissionCount);
 			}
 			m_nMainGearOptionAttrMinCount = Convert.ToInt32(drGameConfig["mainGearOptionAttrMinCount"]);
 			if (m_nMainGearOptionAttrMinCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "메인장비추가옵션 최소갯수가 유효하지 않습니다. m_nMainGearOptionAttrMinCount = " + m_nMainGearOptionAttrMinCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_09 + "m_nMainGearOptionAttrMinCount = " + m_nMainGearOptionAttrMinCount);
 			}
 			m_nMainGearOptionAttrMaxCount = Convert.ToInt32(drGameConfig["mainGearOptionAttrMaxCount"]);
 			if (m_nMainGearOptionAttrMinCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "메인장비추가옵션 최대갯수가 유효하지 않습니다. m_nMainGearOptionAttrMinCount = " + m_nMainGearOptionAttrMinCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_10 + "m_nMainGearOptionAttrMinCount = " + m_nMainGearOptionAttrMinCount);
 			}
 			m_nMainGearRefimentItemId = Convert.ToInt32(drGameConfig["mainGearRefinementItemId"]);
 			if (m_nMainGearRefimentItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "메인장비세련아이템ID가 유효하지 않습니다. m_nMainGearRefimentItemId = " + m_nMainGearRefimentItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_11 + "m_nMainGearRefimentItemId = " + m_nMainGearRefimentItemId);
 			}
 			m_nMainGearDisassembleSlotCount = Convert.ToInt32(drGameConfig["mainGearDisassembleSlotCount"]);
 			if (m_nMainGearDisassembleSlotCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "메인장비분해 슬롯 갯수가 유효하지 않습니다. m_nMainGearDisassembleSlotCount = " + m_nMainGearDisassembleSlotCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_12 + "m_nMainGearDisassembleSlotCount = " + m_nMainGearDisassembleSlotCount);
 			}
 			m_nPartyMemberMaxCount = Convert.ToInt32(drGameConfig["partyMemberMaxCount"]);
 			if (m_nPartyMemberMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "파티멤버최대수가 유효하지 않습니다. m_nPartyMemberMaxCount = " + m_nPartyMemberMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_13 + "m_nPartyMemberMaxCount = " + m_nPartyMemberMaxCount);
 			}
 			m_nPartyMemberLogOutDuration = Convert.ToInt32(drGameConfig["partyMemberLogOutDuration"]);
 			if (m_nPartyMemberLogOutDuration < 0)
 			{
-				SFLogUtil.Warn(GetType(), "파티멤버로그아웃기간이 유효하지 않습니다. m_nPartyMemberLogOutDuration = " + m_nPartyMemberLogOutDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_14 + "m_nPartyMemberLogOutDuration = " + m_nPartyMemberLogOutDuration);
 			}
 			m_nPartyInvitationLifetime = Convert.ToInt32(drGameConfig["partyInvitationLifetime"]);
 			if (m_nPartyInvitationLifetime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "파티초대생명주기가 유효하지 않습니다. m_nPartyInvitationLifetime = " + m_nPartyInvitationLifetime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_15 + "m_nPartyInvitationLifetime = " + m_nPartyInvitationLifetime);
 			}
 			m_nPartyApplicationLifetime = Convert.ToInt32(drGameConfig["partyApplicationLifetime"]);
 			if (m_nPartyApplicationLifetime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "파티가입신청생명주기가 유효하지 않습니다. m_nPartyApplicationLifetime = " + m_nPartyApplicationLifetime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_16 + "m_nPartyApplicationLifetime = " + m_nPartyApplicationLifetime);
 			}
 			m_nPartyCallCoolTime = Convert.ToInt32(drGameConfig["partyCallCoolTime"]);
 			if (m_nPartyCallCoolTime < 0)
 			{
-				SFLogUtil.Warn(GetType(), "파티소집쿨타임이 유효하지 않습니다. m_nPartyCallCoolTime = " + m_nPartyCallCoolTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_17 + "m_nPartyCallCoolTime = " + m_nPartyCallCoolTime);
 			}
 			m_nRestRewardRequiredHeroLevel = Convert.ToInt32(drGameConfig["restRewardRequiredHeroLevel"]);
 			if (m_nRestRewardRequiredHeroLevel <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "휴식보상필요영웅레벨이 유효하지 않습니다. m_nRestRewardRequiredHeroLevel = " + m_nRestRewardRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_18 + "m_nRestRewardRequiredHeroLevel = " + m_nRestRewardRequiredHeroLevel);
 			}
 			m_nRestRewardGoldReceiveExpRate = Convert.ToInt32(drGameConfig["restRewardGoldReceiveExpRate"]);
 			if (m_nRestRewardGoldReceiveExpRate < 0)
 			{
-				SFLogUtil.Warn(GetType(), "골드휴식보상비율이 유효하지 않습니다. m_nRestRewardGoldReceiveExpRate = " + m_nRestRewardGoldReceiveExpRate);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_19 + "m_nRestRewardGoldReceiveExpRate = " + m_nRestRewardGoldReceiveExpRate);
 			}
 			m_nRestRewardDiaReceiveExpRate = Convert.ToInt32(drGameConfig["restRewardDiaReceiveExpRate"]);
 			if (m_nRestRewardDiaReceiveExpRate < 0)
 			{
-				SFLogUtil.Warn(GetType(), "다이아휴식보상비율이 유효하지 않습니다. m_nRestRewardDiaReceiveExpRate = " + m_nRestRewardDiaReceiveExpRate);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_20 + "m_nRestRewardDiaReceiveExpRate = " + m_nRestRewardDiaReceiveExpRate);
 			}
 			m_nChattingMaxLength = Convert.ToInt32(drGameConfig["chattingMaxLength"]);
 			if (m_nChattingMaxLength <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "채팅최대길이가 유효하지 않습니다. m_nChattingMaxLength = " + m_nChattingMaxLength);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_21 + "m_nChattingMaxLength = " + m_nChattingMaxLength);
 			}
 			m_nChattingMinInterval = Convert.ToInt32(drGameConfig["chattingMinInterval"]);
 			if (m_nChattingMinInterval < 0)
 			{
-				SFLogUtil.Warn(GetType(), "채팅최소인터벌이 유효하지 않습니다. m_nChattingMinInterval = " + m_nChattingMinInterval);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_22 + "m_nChattingMinInterval = " + m_nChattingMinInterval);
 			}
 			m_nWorldChattingItemId = Convert.ToInt32(drGameConfig["worldChattingItemId"]);
 			if (m_nWorldChattingItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "세계채팅아이템ID가 유효하지 않습니다. m_nWorldChattingItemId = " + m_nWorldChattingItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_23 + "m_nWorldChattingItemId = " + m_nWorldChattingItemId);
 			}
 			int nMountLevelUpItemId = Convert.ToInt32(drGameConfig["mountLevelUpItemId"]);
 			m_nMountQualityUpRequiredLevelUpCount = Convert.ToInt32(drGameConfig["mountQualityUpRequiredLevelUpCount"]);
 			if (m_nMountQualityUpRequiredLevelUpCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "탈것품질업요구레벨업수량이 유효하지 않습니다. m_nMountQualityUpRequiredLevelUpCount = " + m_nMountQualityUpRequiredLevelUpCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_24 + "m_nMountQualityUpRequiredLevelUpCount = " + m_nMountQualityUpRequiredLevelUpCount);
 			}
 			m_fEquippedMountAttrFactor = Convert.ToSingle(drGameConfig["equippedMountAttrFactor"]);
 			if (m_fEquippedMountAttrFactor <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "장착된탈것속성가중치가 유효하지 않습니다. m_fEquippedMountAttrFactor = " + m_fEquippedMountAttrFactor);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_25 + "m_fEquippedMountAttrFactor = " + m_fEquippedMountAttrFactor);
 			}
 			m_nMountGearOptionAttrCount = Convert.ToInt32(drGameConfig["mountGearOptionAttrCount"]);
 			if (m_nMountGearOptionAttrCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "탈것장비옵션속성갯수가 유효하지 않습니다. m_nMountGearOptionAttrCount = " + m_nMountGearOptionAttrCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_26 + "m_nMountGearOptionAttrCount = " + m_nMountGearOptionAttrCount);
 			}
 			m_nMountGearRefinementItemId = Convert.ToInt32(drGameConfig["mountGearRefinementItemId"]);
 			if (m_nMountGearRefinementItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "탈것장비세련아이템ID가 유효하지 않습니다. m_nMountGearRefinementItemId = " + m_nMountGearRefinementItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_27 + "m_nMountGearRefinementItemId = " + m_nMountGearRefinementItemId);
 			}
 			m_nMountAwakeningRequiredHeroLevel = Convert.ToInt32(drGameConfig["mountAwakeningRequiredHeroLevel"]);
 			if (m_nMountGearRefinementItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "탈것각성필요영웅레벨이 유효하지 않습니다. m_nMountAwakeningRequiredHeroLevel = " + m_nMountAwakeningRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_28 + "m_nMountAwakeningRequiredHeroLevel = " + m_nMountAwakeningRequiredHeroLevel);
 			}
 			int nMountAwakeningItemId = Convert.ToInt32(drGameConfig["mountAwakeningItemId"]);
 			m_nMountPotionAttrItemId = Convert.ToInt32(drGameConfig["mountPotionAttrItemId"]);
 			if (m_nMountGearRefinementItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "탈것포션속성아이템ID가 유효하지 않습니다. m_nMountPotionAttrItemId = " + m_nMountPotionAttrItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_29 + "m_nMountPotionAttrItemId = " + m_nMountPotionAttrItemId);
 			}
 			m_nDungeonFreeSweepDailyCount = Convert.ToInt32(drGameConfig["dungeonFreeSweepDailyCount"]);
 			m_nDungeonSweepItemId = Convert.ToInt32(drGameConfig["dungeonSweepItemId"]);
 			m_nWingEnchantItemId = Convert.ToInt32(drGameConfig["wingEnchantItemId"]);
 			if (m_nWingEnchantItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "날개강화아이템ID가 유효하지 않습니다. m_nWingEnchantItemId = " + m_nWingEnchantItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_30 + "m_nWingEnchantItemId = " + m_nWingEnchantItemId);
 			}
 			m_nWingEnchantExp = Convert.ToInt32(drGameConfig["wingEnchantExp"]);
 			if (m_nWingEnchantExp < 0)
 			{
-				SFLogUtil.Warn(GetType(), "날개강화경험치가 유효하지 않습니다. m_nWingEnchantExp = " + m_nWingEnchantExp);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_31 + "m_nWingEnchantExp = " + m_nWingEnchantExp);
 			}
 			m_nWingVisibleMinVipLevel = Convert.ToInt32(drGameConfig["wingVisibleMinVipLevel"]);
 			if (m_nWingVisibleMinVipLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "날개표시최소VIP레벨이 유효하지 않습니다. m_nWingVisibleMinVipLevel = " + m_nWingVisibleMinVipLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_32 + "m_nWingVisibleMinVipLevel = " + m_nWingVisibleMinVipLevel);
 			}
 			m_nMaxStamina = Convert.ToInt32(drGameConfig["maxStamina"]);
 			if (m_nMaxStamina <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "최대스태미너가 유효하지 않습니다. m_nMaxStamina = " + m_nMaxStamina);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_33 + "m_nMaxStamina = " + m_nMaxStamina);
 			}
 			m_nStaminaRecoveryTime = Convert.ToInt32(drGameConfig["staminaRecoveryTime"]);
 			if (m_nStaminaRecoveryTime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "스태미너회복시간이 유효하지 않습니다. m_nStaminaRecoveryTime = " + m_nStaminaRecoveryTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_34 + "m_nStaminaRecoveryTime = " + m_nStaminaRecoveryTime);
 			}
 			m_nCartNormalSpeed = Convert.ToInt32(drGameConfig["cartNormalSpeed"]);
 			if (m_nCartNormalSpeed <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트일반속력이 유효하지 않습니다. m_nCartNormalSpeed = " + m_nCartNormalSpeed);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_35 + "m_nCartNormalSpeed = " + m_nCartNormalSpeed);
 			}
 			m_nCartHighSpeed = Convert.ToInt32(drGameConfig["cartHighSpeed"]);
 			if (m_nCartHighSpeed <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트고속속력이 유효하지 않습니다. m_nCartHighSpeed = " + m_nCartHighSpeed);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_36 + "m_nCartHighSpeed = " + m_nCartHighSpeed);
 			}
 			m_nCartHighSpeedDuration = Convert.ToInt32(drGameConfig["cartHighSpeedDuration"]);
 			if (m_nCartHighSpeedDuration <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트고속속력기간이 유효하지 않습니다. m_nCartHighSpeedDuration = " + m_nCartHighSpeedDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_37 + "m_nCartHighSpeedDuration = " + m_nCartHighSpeedDuration);
 			}
 			m_nCartHighSpeedDurationExtension = Convert.ToInt32(drGameConfig["cartHighSpeedDurationExtension"]);
 			if (m_nCartHighSpeedDurationExtension <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트고속속력기간확장이 유효하지 않습니다. m_nCartHighSpeedDurationExtension = " + m_nCartHighSpeedDurationExtension);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_38 + "m_nCartHighSpeedDurationExtension = " + m_nCartHighSpeedDurationExtension);
 			}
 			m_nCartAccelCoolTime = Convert.ToInt32(drGameConfig["cartAccelCoolTime"]);
 			if (m_nCartAccelCoolTime < 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트가속쿨타임이 유효하지 않습니다. m_nCartAccelCoolTime = " + m_nCartAccelCoolTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_39 + "m_nCartAccelCoolTime = " + m_nCartAccelCoolTime);
 			}
 			m_nCartAccelSuccessRate = Convert.ToInt32(drGameConfig["cartAccelSuccessRate"]);
 			if (m_nCartAccelSuccessRate <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "카트가속성공율이 유효하지 않습니다. m_nCartAccelSuccessRate = " + m_nCartAccelSuccessRate);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_40 + "m_nCartAccelSuccessRate = " + m_nCartAccelSuccessRate);
 			}
 			m_nPvpMinHeroLevel = Convert.ToInt32(drGameConfig["pvpMinHeroLevel"]);
 			if (m_nPvpMinHeroLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "PVP최소영웅레벨이 유효하지 않습니다. m_nPvpMinHeroLevel = " + m_nPvpMinHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_41 + "m_nPvpMinHeroLevel = " + m_nPvpMinHeroLevel);
 			}
 			m_nWorldLevelExpBuffMinHeroLevel = Convert.ToInt32(drGameConfig["worldLevelExpBuffMinHeroLevel"]);
 			if (m_nWorldLevelExpBuffMinHeroLevel <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "세계레벨경험치버프최소영웅레벨이 유효하지 않습니다. m_nWorldLevelExpBuffMinHeroLevel = " + m_nWorldLevelExpBuffMinHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_42 + "m_nWorldLevelExpBuffMinHeroLevel = " + m_nWorldLevelExpBuffMinHeroLevel);
 			}
 			m_nNationTransmissionRequiredHeroLevel = Convert.ToInt32(drGameConfig["nationTransmissionRequiredHeroLevel"]);
 			m_nationTransmissionExitPosition.x = Convert.ToSingle(drGameConfig["nationTransmissionExitXPosition"]);
@@ -1655,107 +1667,107 @@ public class Resource
 			m_nBountyHunterQuestMaxCount = Convert.ToInt32(drGameConfig["bountyHunterQuestMaxCount"]);
 			if (m_nBountyHunterQuestMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "현상금사냥꾼퀘스트최대횟수가 유효하지 않습니다. m_nBountyHunterQuestMaxCount = " + m_nBountyHunterQuestMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_43 + "m_nBountyHunterQuestMaxCount = " + m_nBountyHunterQuestMaxCount);
 			}
 			m_nRankingDisplayMaxCount = Convert.ToInt32(drGameConfig["rankingDisplayMaxCount"]);
 			if (m_nRankingDisplayMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "랭킹표시 최대카운트가 유효하지 않습니다. m_nRankingDisplayMaxCount = " + m_nRankingDisplayMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_44 + "m_nRankingDisplayMaxCount = " + m_nRankingDisplayMaxCount);
 			}
 			m_nGuildRankingDisplayMaxCount = Convert.ToInt32(drGameConfig["guildRankingDisplayMaxCount"]);
 			if (m_nGuildRankingDisplayMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드랭킹표시 최대카운트가 유효하지 않습니다. m_nGuildRankingDisplayMaxCount = " + m_nGuildRankingDisplayMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_45 + "m_nGuildRankingDisplayMaxCount = " + m_nGuildRankingDisplayMaxCount);
 			}
 			m_nPresentPopularityPointRankingDisplayMaxCount = Convert.ToInt32(drGameConfig["presentPopularityPointRankingDisplayMaxCount"]);
 			if (m_nPresentPopularityPointRankingDisplayMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "선물인기점수랭킹표시 최대카운트가 유효하지 않습니다. m_nPresentPopularityPointRankingDisplayMaxCount = " + m_nPresentPopularityPointRankingDisplayMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_46 + "m_nPresentPopularityPointRankingDisplayMaxCount = " + m_nPresentPopularityPointRankingDisplayMaxCount);
 			}
 			m_nPresentContributionPointRankingDisplayMaxCount = Convert.ToInt32(drGameConfig["presentContributionPointRankingDisplayMaxCount"]);
 			if (m_nPresentContributionPointRankingDisplayMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "선물공헌점수랭킹표시 최대카운트가 유효하지 않습니다. m_nPresentContributionPointRankingDisplayMaxCount = " + m_nPresentContributionPointRankingDisplayMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_47 + "m_nPresentContributionPointRankingDisplayMaxCount = " + m_nPresentContributionPointRankingDisplayMaxCount);
 			}
 			m_nGuildRequiredHeroLevel = Convert.ToInt32(drGameConfig["guildRequiredHeroLevel"]);
 			if (m_nGuildRequiredHeroLevel <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드 요구영웅레벨이 유효하지 않습니다. m_nGuildRequiredHeroLevel = " + m_nGuildRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_48 + "m_nGuildRequiredHeroLevel = " + m_nGuildRequiredHeroLevel);
 			}
 			m_nGuildCreationRequiredVipLevel = Convert.ToInt32(drGameConfig["guildCreationRequiredVipLevel"]);
 			if (m_nGuildCreationRequiredVipLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드생성 요구VIP레벨이 유효하지 않습니다. m_nGuildCreationRequiredVipLevel = " + m_nGuildCreationRequiredVipLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_49 + "m_nGuildCreationRequiredVipLevel = " + m_nGuildCreationRequiredVipLevel);
 			}
 			m_nGuildCreationRequiredDia = Convert.ToInt32(drGameConfig["guildCreationRequiredDia"]);
 			if (m_nGuildCreationRequiredDia <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드생성 요구다이아가 유효하지 않습니다. m_nGuildCreationRequiredDia = " + m_nGuildCreationRequiredDia);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_50 + "m_nGuildCreationRequiredDia = " + m_nGuildCreationRequiredDia);
 			}
 			m_nGuildRejoinIntervalTime = Convert.ToInt32(drGameConfig["guildRejoinIntervalTime"]);
 			if (m_nGuildRejoinIntervalTime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드재가입간격시간이 유효하지 않습니다. m_nGuildRejoinIntervalTime = " + m_nGuildRejoinIntervalTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_51 + "m_nGuildRejoinIntervalTime = " + m_nGuildRejoinIntervalTime);
 			}
 			m_nGuildApplicationReceptionMaxCount = Convert.ToInt32(drGameConfig["guildApplicationReceptionMaxCount"]);
 			if (m_nGuildApplicationReceptionMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드가입신청접수최대횟수가 유효하지 않습니다. m_nGuildApplicationReceptionMaxCount = " + m_nGuildApplicationReceptionMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_52 + "m_nGuildApplicationReceptionMaxCount = " + m_nGuildApplicationReceptionMaxCount);
 			}
 			m_nGuildDailyApplicationMaxCount = Convert.ToInt32(drGameConfig["guildDailyApplicationMaxCount"]);
 			if (m_nGuildDailyApplicationMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드일일신청최대횟수가 유효하지 않습니다. m_nGuildDailyApplicationMaxCount = " + m_nGuildDailyApplicationMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_53 + "m_nGuildDailyApplicationMaxCount = " + m_nGuildDailyApplicationMaxCount);
 			}
 			m_nGuildDailyBanishmentMaxCount = Convert.ToInt32(drGameConfig["guildDailyBanishmentMaxCount"]);
 			if (m_nGuildDailyBanishmentMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드일일추방최대횟수가 유효하지 않습니다. m_nGuildDailyBanishmentMaxCount = " + m_nGuildDailyBanishmentMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_54 + "m_nGuildDailyBanishmentMaxCount = " + m_nGuildDailyBanishmentMaxCount);
 			}
 			m_nGuildInvitationLifetime = Convert.ToInt32(drGameConfig["guildInvitationLifetime"]);
 			if (m_nGuildInvitationLifetime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드초대생명주기가 유효하지 않습니다. m_nGuildInvitationLifetime = " + m_nGuildInvitationLifetime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_55 + "m_nGuildInvitationLifetime = " + m_nGuildInvitationLifetime);
 			}
 			m_nGuildNoticeMaxLength = Convert.ToInt32(drGameConfig["guildNoticeMaxLength"]);
 			if (m_nGuildNoticeMaxLength <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드알림최대길이가 유효하지 않습니다. m_nGuildNoticeMaxLength = " + m_nGuildNoticeMaxLength);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_56 + " m_nGuildNoticeMaxLength = " + m_nGuildNoticeMaxLength);
 			}
 			m_nGuildViceMasterCount = Convert.ToInt32(drGameConfig["guildViceMasterCount"]);
 			if (m_nGuildViceMasterCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드부길드장수가 유효하지 않습니다. m_nGuildViceMasterCount = " + m_nGuildViceMasterCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_57 + "m_nGuildViceMasterCount = " + m_nGuildViceMasterCount);
 			}
 			m_nGuildLordCount = Convert.ToInt32(drGameConfig["guildLordCount"]);
 			if (m_nGuildLordCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드로드수가 유효하지 않습니다. m_nGuildLordCount = " + m_nGuildLordCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_58 + "m_nGuildLordCount = " + m_nGuildLordCount);
 			}
 			m_nGuildCallLifetime = Convert.ToInt32(drGameConfig["guildCallLifetime"]);
 			if (m_nGuildCallLifetime < 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드소집생명주기가 유효하지 않습니다. m_nGuildCallLifetime = " + m_nGuildCallLifetime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_59 + "m_nGuildCallLifetime = " + m_nGuildCallLifetime);
 			}
 			m_fGuildCallRadius = Convert.ToSingle(drGameConfig["guildCallRadius"]);
 			if (m_fGuildCallRadius <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "길드소집반경이 유효하지 않습니다. m_fGuildCallRadius = " + m_fGuildCallRadius);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_60 + "m_fGuildCallRadius = " + m_fGuildCallRadius);
 			}
 			m_nGuildDailyObjectiveNoticeCoolTime = Convert.ToInt32(drGameConfig["guildDailyObjectiveNoticeCoolTime"]);
 			if (m_nGuildDailyObjectiveNoticeCoolTime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드일일목표알림쿨타임이 유효하지 않습니다. m_nGuildDailyObjectiveNoticeCoolTime = " + m_nGuildDailyObjectiveNoticeCoolTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_61 + "m_nGuildDailyObjectiveNoticeCoolTime = " + m_nGuildDailyObjectiveNoticeCoolTime);
 			}
 			m_nDefaultGuildWeeklyObjectiveId = Convert.ToInt32(drGameConfig["defaultGuildWeeklyObjectiveId"]);
 			if (m_nDefaultGuildWeeklyObjectiveId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "기본길드주간목표ID가 유효하지 않습니다. m_nDefaultGuildWeeklyObjectiveId = " + m_nDefaultGuildWeeklyObjectiveId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_62 + "m_nDefaultGuildWeeklyObjectiveId = " + m_nDefaultGuildWeeklyObjectiveId);
 			}
 			m_nGuildHuntingDonationMaxCount = Convert.ToInt32(drGameConfig["guildHuntingDonationMaxCount"]);
 			if (m_nGuildHuntingDonationMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "길드헌팅기부최대횟수가 유효하지 않습니다. m_nGuildHuntingDonationMaxCount = " + m_nGuildHuntingDonationMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_63 + "m_nGuildHuntingDonationMaxCount = " + m_nGuildHuntingDonationMaxCount);
 			}
 			int nGuildHuntingDonationItemId = Convert.ToInt32(drGameConfig["guildHuntingDonationItemId"]);
 			long lnGuildHuntingDonationRewardId = Convert.ToInt64(drGameConfig["guildHuntingDonationItemRewardId"]);
@@ -1763,291 +1775,291 @@ public class Resource
 			m_nRankOpenRequiredMainQuestNo = Convert.ToInt32(drGameConfig["rankOpenRequiredMainQuestNo"]);
 			if (m_nRankOpenRequiredMainQuestNo <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "계급개방메인퀘스트번호가 유효하지 않습니다. m_nRankOpenRequiredMainQuestNo = " + m_nRankOpenRequiredMainQuestNo);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_64 + "m_nRankOpenRequiredMainQuestNo = " + m_nRankOpenRequiredMainQuestNo);
 			}
 			m_nWingOpenRequiredHeroLevel = Convert.ToInt32(drGameConfig["wingOpenRequiredHeroLevel"]);
 			if (m_nWingOpenRequiredHeroLevel <= 1)
 			{
-				SFLogUtil.Warn(GetType(), "날개개방영웅레벨이 유효하지 않습니다. m_nWingOpenRequiredHeroLevel = " + m_nWingOpenRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_65 + "m_nWingOpenRequiredHeroLevel = " + m_nWingOpenRequiredHeroLevel);
 			}
 			m_nWingOpenProvideWingId = Convert.ToInt32(drGameConfig["wingOpenProvideWingId"]);
 			if (m_nWingOpenProvideWingId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "날개개방지급날개ID가 유효하지 않습니다. m_nWingOpenProvideWingId = " + m_nWingOpenProvideWingId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_66 + "m_nWingOpenProvideWingId = " + m_nWingOpenProvideWingId);
 			}
 			m_nNationCallLifeTime = Convert.ToInt32(drGameConfig["nationCallLifetime"]);
 			if (m_nNationCallLifeTime <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "국가소집생명주기시간이 유효하지 않습니다. m_nNationCallLifeTime = " + m_nNationCallLifeTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_67 + "m_nNationCallLifeTime = " + m_nNationCallLifeTime);
 			}
 			m_fNationCallRadius = Convert.ToSingle(drGameConfig["nationCallRadius"]);
 			if (m_fNationCallRadius <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "국가소집반경이 유효하지 않습니다. m_fNationCallRadius = " + m_fNationCallRadius);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_68 + "m_fNationCallRadius = " + m_fNationCallRadius);
 			}
 			m_nNationWarMonsterBattleModeDuration = Convert.ToInt32(drGameConfig["nationWarMonsterBattleModeDuration"]);
 			if ((float)m_nNationWarMonsterBattleModeDuration <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "국가전몬스터전투모드유지기간이 유효하지 않습니다. m_nNationWarMonsterBattleModeDuration = " + m_nNationWarMonsterBattleModeDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_69 + "m_nNationWarMonsterBattleModeDuration = " + m_nNationWarMonsterBattleModeDuration);
 			}
 			m_nCreatureCardShopRandomProductCount = Convert.ToInt32(drGameConfig["creatureCardShopRandomProductCount"]);
 			if (m_nCreatureCardShopRandomProductCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처카드상점랜덤상품수가 유효하지 않습니다. m_nCreatureCardShopRandomProductCount = " + m_nCreatureCardShopRandomProductCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_70 + "m_nCreatureCardShopRandomProductCount = " + m_nCreatureCardShopRandomProductCount);
 			}
 			m_nCreatureCardShopPaidRefreshDia = Convert.ToInt32(drGameConfig["creatureCardShopPaidRefreshDia"]);
 			if (m_nCreatureCardShopPaidRefreshDia <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처카드상점유료갱신다이아가 유효하지 않습니다. m_nCreatureCardShopPaidRefreshDia = " + m_nCreatureCardShopPaidRefreshDia);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_71 + "m_nCreatureCardShopPaidRefreshDia = " + m_nCreatureCardShopPaidRefreshDia);
 			}
 			m_nAccelerationRequiredMoveDuration = Convert.ToInt32(drGameConfig["accelerationRequiredMoveDuration"]);
 			if (m_nAccelerationRequiredMoveDuration <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "가속필요이동지속시간이 유효하지 않습니다. m_nAccelerationRequiredMoveDuration = " + m_nAccelerationRequiredMoveDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_72 + "m_nAccelerationRequiredMoveDuration = " + m_nAccelerationRequiredMoveDuration);
 			}
 			m_nAccelerationMoveSpeed = Convert.ToInt32(drGameConfig["accelerationMoveSpeed"]);
 			if (m_nAccelerationMoveSpeed <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "가속이동속도가 유효하지 않습니다. m_nAccelerationMoveSpeed = " + m_nAccelerationMoveSpeed);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_73 + "m_nAccelerationMoveSpeed = " + m_nAccelerationMoveSpeed);
 			}
 			m_nSceneryQuestRequiredMainQuestNo = Convert.ToInt32(drGameConfig["sceneryQuestRequiredMainQuestNo"]);
 			if (m_nSceneryQuestRequiredMainQuestNo <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "풍광퀘스트필요메인퀘스트번호가 유효하지 않습니다. m_nSceneryQuestRequiredMainQuestNo = " + m_nSceneryQuestRequiredMainQuestNo);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_74 + "m_nSceneryQuestRequiredMainQuestNo = " + m_nSceneryQuestRequiredMainQuestNo);
 			}
 			m_nMonsterGroggyDuration = Convert.ToInt32(drGameConfig["monsterGroggyDuration"]);
 			if (m_nMonsterGroggyDuration <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "몬스터그로기유지시간이 유효하지 않습니다. m_nMonsterGroggyDuration = " + m_nMonsterGroggyDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_75 + "m_nMonsterGroggyDuration = " + m_nMonsterGroggyDuration);
 			}
 			m_nMonsterStealDuration = Convert.ToInt32(drGameConfig["monsterStealDuration"]);
 			if (m_nMonsterStealDuration <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "몬스터훔치기유지시간이 유효하지 않습니다. m_nMonsterStealDuration = " + m_nMonsterStealDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_76 + "m_nMonsterStealDuration = " + m_nMonsterStealDuration);
 			}
 			m_nOpenGiftRequiredHeroLevel = Convert.ToInt32(drGameConfig["openGiftRequiredHeroLevel"]);
 			if (m_nOpenGiftRequiredHeroLevel <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "오픈선물요구영웅레벨이 유효하지 않습니다. m_nOpenGiftRequiredHeroLevel = " + m_nOpenGiftRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_77 + "m_nOpenGiftRequiredHeroLevel = " + m_nOpenGiftRequiredHeroLevel);
 			}
 			m_nOpen7DayEventRequiredMainQuestNo = Convert.ToInt32(drGameConfig["open7DayEventRequiredMainQuestNo"]);
 			if (m_nOpen7DayEventRequiredMainQuestNo < 0)
 			{
-				SFLogUtil.Warn(GetType(), "오픈7일이벤트필요메인퀘스트번호가 유효하지 않습니다. m_nOpen7DayEventRequiredMainQuestNo = " + m_nOpen7DayEventRequiredMainQuestNo);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_78 + "m_nOpen7DayEventRequiredMainQuestNo = " + m_nOpen7DayEventRequiredMainQuestNo);
 			}
 			m_nBountyHunterQuestRequiredHeroLevel = Convert.ToInt32(drGameConfig["bountyHunterQuestRequiredHeroLevel"]);
 			if (m_nBountyHunterQuestRequiredHeroLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "현상금사냥꾼퀘스트요구영웅레벨이 유효하지 않습니다. m_nBountyHunterQuestRequiredHeroLevel = " + m_nBountyHunterQuestRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_79 + "m_nBountyHunterQuestRequiredHeroLevel = " + m_nBountyHunterQuestRequiredHeroLevel);
 			}
 			m_nTaskConsignmentRequiredVipLevel = Convert.ToInt32(drGameConfig["taskConsignmentRequiredVipLevel"]);
 			if (m_nTaskConsignmentRequiredVipLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "할일위탁필요VIP레벨이 유효하지 않습니다.");
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_80);
 			}
 			m_nEliteMonsterKillApplicationRequiredHeroLevel = Convert.ToInt32(drGameConfig["eliteMonsterKillApplicationRequiredHeroLevel"]);
 			if (m_nEliteMonsterKillApplicationRequiredHeroLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "정예몬스터처치적용필요영웅레벨이 유효하지 않습니다. m_nEliteMonsterKillApplicationRequiredHeroLevel = " + m_nEliteMonsterKillApplicationRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_81 + "m_nEliteMonsterKillApplicationRequiredHeroLevel = " + m_nEliteMonsterKillApplicationRequiredHeroLevel);
 			}
 			m_nWarehouseRequiredVipLevel = Convert.ToInt32(drGameConfig["warehouseRequiredVipLevel"]);
 			if (m_nWarehouseRequiredVipLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "창고필요VIP레벨이 유효하지 않습니다. m_nWarehouseRequiredVipLevel = " + m_nWarehouseRequiredVipLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_82 + "m_nWarehouseRequiredVipLevel = " + m_nWarehouseRequiredVipLevel);
 			}
 			m_nFreeWarehouseSlotCount = Convert.ToInt32(drGameConfig["freeWarehouseSlotCount"]);
 			if (m_nFreeWarehouseSlotCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "무료창고슬롯수가 유효하지 않습니다. m_nFreeWarehouseSlotCount = " + m_nFreeWarehouseSlotCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_83 + "m_nFreeWarehouseSlotCount = " + m_nFreeWarehouseSlotCount);
 			}
 			m_nWingMemoryPieceInstallationRequiredHeroLevel = Convert.ToInt32(drGameConfig["wingMemoryPieceInstallationRequiredHeroLevel"]);
 			if (m_nWingMemoryPieceInstallationRequiredHeroLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "날개기억조각장착필요영웅레벨이 유효하지 않습니다. m_nWingMemoryPieceInstallationRequiredHeroLevel = " + m_nWingMemoryPieceInstallationRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_84 + "m_nWingMemoryPieceInstallationRequiredHeroLevel = " + m_nWingMemoryPieceInstallationRequiredHeroLevel);
 			}
 			m_nOrdealQuestSlotCount = Convert.ToInt32(drGameConfig["ordealQuestSlotCount"]);
 			if (m_nOrdealQuestSlotCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "시련퀘스트슬롯카운트가 유효하지 않습니다. m_nOrdealQuestSlotCount = " + m_nOrdealQuestSlotCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_85 + "m_nOrdealQuestSlotCount = " + m_nOrdealQuestSlotCount);
 			}
 			m_nFriendMaxCount = Convert.ToInt32(drGameConfig["friendMaxCount"]);
 			if (m_nFriendMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "친구최대수가 유효하지 않습니다. m_nFriendMaxCount = " + m_nFriendMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_86 + "m_nFriendMaxCount = " + m_nFriendMaxCount);
 			}
 			m_nTempFriendMaxCount = Convert.ToInt32(drGameConfig["tempFriendMaxCount"]);
 			if (m_nTempFriendMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "임시친구최대수가 유효하지 않습니다. m_nTempFriendMaxCount = " + m_nTempFriendMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_87 + "m_nTempFriendMaxCount = " + m_nTempFriendMaxCount);
 			}
 			m_nDeadRecordMaxCount = Convert.ToInt32(drGameConfig["deadRecordMaxCount"]);
 			if (m_nDeadRecordMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "사망기록최대수가 유효하지 않습니다. m_nDeadRecordMaxCount = " + m_nDeadRecordMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_88 + "m_nDeadRecordMaxCount = " + m_nDeadRecordMaxCount);
 			}
 			m_nBlacklistEntryMaxCount = Convert.ToInt32(drGameConfig["blacklistEntryMaxCount"]);
 			if (m_nBlacklistEntryMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "블랙리스트항목최대수가 유효하지 않습니다. m_nBlacklistEntryMaxCount = " + m_nBlacklistEntryMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_89 + "m_nBlacklistEntryMaxCount = " + m_nBlacklistEntryMaxCount);
 			}
 			m_nBlessingQuestListMaxCount = Convert.ToInt32(drGameConfig["blessingQuestListMaxCount"]);
 			if (m_nBlessingQuestListMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "축복퀘스트목록최대수가 유효하지 않습니다. m_nBlessingQuestListMaxCount = " + m_nBlessingQuestListMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_90 + "m_nBlessingQuestListMaxCount = " + m_nBlessingQuestListMaxCount);
 			}
 			m_nBlessingQuestRequiredHeroLevel = Convert.ToInt32(drGameConfig["blessingQuestRequiredHeroLevel"]);
 			if (m_nBlessingQuestRequiredHeroLevel < 0)
 			{
-				SFLogUtil.Warn(GetType(), "축복퀘스트필요영웅레벨이 유효하지 않습니다. m_nBlessingQuestRequiredHeroLevel = " + m_nBlessingQuestRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_91 + "m_nBlessingQuestRequiredHeroLevel = " + m_nBlessingQuestRequiredHeroLevel);
 			}
 			m_nBlessingListMaxCount = Convert.ToInt32(drGameConfig["blessingListMaxCount"]);
 			if (m_nBlessingListMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "축복목록최대수가 유효하지 않습니다. m_nBlessingListMaxCount = " + m_nBlessingListMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_92 + "m_nBlessingListMaxCount = " + m_nBlessingListMaxCount);
 			}
 			m_nOwnerProspectQuestListMaxCount = Convert.ToInt32(drGameConfig["ownerProspectQuestListMaxCount"]);
 			if (m_nOwnerProspectQuestListMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "소유유망자퀘스트목록최대수가 유효하지 않습니다. m_nOwnerProspectQuestListMaxCount = " + m_nOwnerProspectQuestListMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_93 + "m_nOwnerProspectQuestListMaxCount = " + m_nOwnerProspectQuestListMaxCount);
 			}
 			m_nTargetProspectQuestListMaxCount = Convert.ToInt32(drGameConfig["targetProspectQuestListMaxCount"]);
 			if (m_nTargetProspectQuestListMaxCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "대상유망자퀘스트목록최대수가 유효하지 않습니다. m_nTargetProspectQuestListMaxCount = " + m_nTargetProspectQuestListMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_95 + "m_nTargetProspectQuestListMaxCount = " + m_nTargetProspectQuestListMaxCount);
 			}
 			m_nCreatureMaxCount = Convert.ToInt32(drGameConfig["creatureMaxCount"]);
 			if (m_nCreatureMaxCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처최대개수가 유효하지 않습니다. m_nCreatureMaxCount  = " + m_nCreatureMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_96 + "m_nCreatureMaxCount  = " + m_nCreatureMaxCount);
 			}
 			m_nCreatureCheerMaxCount = Convert.ToInt32(drGameConfig["creatureCheerMaxCount"]);
 			if (m_nCreatureCheerMaxCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처응원최대개수가 유효하지 않습니다. m_nCreatureCheerMaxCount = " + m_nCreatureCheerMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_97 + "m_nCreatureCheerMaxCount = " + m_nCreatureCheerMaxCount);
 			}
 			m_fCreatureCheerAttrFactor = Convert.ToSingle(drGameConfig["creatureCheerAttrFactor"]);
 			if (m_fCreatureCheerAttrFactor <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "크리처응원속성계수가 유효하지 않습니다. m_fCreatureCheerAttrFactor = " + m_fCreatureCheerAttrFactor);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_98 + "m_fCreatureCheerAttrFactor = " + m_fCreatureCheerAttrFactor);
 			}
 			m_fCreatureEvaluationFactor = Convert.ToSingle(drGameConfig["creatureEvaluationFactor"]);
 			if (m_fCreatureEvaluationFactor <= 0f)
 			{
-				SFLogUtil.Warn(GetType(), "크리처평점계수가 유효하지 않습니다. m_fCreatureEvaluationFactor = " + m_fCreatureEvaluationFactor);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_99 + "m_fCreatureEvaluationFactor = " + m_fCreatureEvaluationFactor);
 			}
 			m_nCreatureAdditionalAttrCount = Convert.ToInt32(drGameConfig["creatureAdditionalAttrCount"]);
 			if (m_nCreatureAdditionalAttrCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처추가속성개수가 유효하지 않습니다. m_nCreatureAdditionalAttrCount = " + m_nCreatureAdditionalAttrCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_100 + "m_nCreatureAdditionalAttrCount = " + m_nCreatureAdditionalAttrCount);
 			}
 			m_nCreatureSkillSlotMaxCount = Convert.ToInt32(drGameConfig["creatureSkillSlotMaxCount"]);
 			if (m_nCreatureSkillSlotMaxCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처스킬슬롯최대개수가 유효하지 않습니다. m_nCreatureSkillSlotMaxCount = " + m_nCreatureSkillSlotMaxCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_101 + "m_nCreatureSkillSlotMaxCount = " + m_nCreatureSkillSlotMaxCount);
 			}
 			m_nCreatureSkillSlotBaseOpenCount = Convert.ToInt32(drGameConfig["creatureSkillSlotBaseOpenCount"]);
 			if (m_nCreatureSkillSlotBaseOpenCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처스킬기본개방개수가 유효하지 않습니다. m_nCreatureSkillSlotBaseOpenCount = " + m_nCreatureSkillSlotBaseOpenCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_102 + "m_nCreatureSkillSlotBaseOpenCount = " + m_nCreatureSkillSlotBaseOpenCount);
 			}
 			m_nCreatureCompositionSkillProtectionItemId = Convert.ToInt32(drGameConfig["creatureCompositionSkillProtectionItemId"]);
 			if (m_nCreatureCompositionSkillProtectionItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처합성스킬보호아이템ID가 유효하지 않습니다. m_nCreatureCompositionSkillProtectionItemId = " + m_nCreatureCompositionSkillProtectionItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_103 + "m_nCreatureCompositionSkillProtectionItemId = " + m_nCreatureCompositionSkillProtectionItemId);
 			}
 			m_nCreatureInjectionExpRetrievalRate = Convert.ToInt32(drGameConfig["creatureInjectionExpRetrievalRate"]);
 			if (m_nCreatureInjectionExpRetrievalRate < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처주입경험치회수비율이 유효하지 않습니다. m_nCreatureInjectionExpRetrievalRate = " + m_nCreatureInjectionExpRetrievalRate);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_104 + "m_nCreatureInjectionExpRetrievalRate = " + m_nCreatureInjectionExpRetrievalRate);
 			}
 			m_nCreatureVariationRequiredItemId = Convert.ToInt32(drGameConfig["creatureVariationRequiredItemId"]);
 			if (m_nCreatureVariationRequiredItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처변이필요아이템ID가 유효하지 않습니다. m_nCreatureVariationRequiredItemId = " + m_nCreatureVariationRequiredItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_105 + "m_nCreatureVariationRequiredItemId = " + m_nCreatureVariationRequiredItemId);
 			}
 			m_nCreatureAdditionalAttrSwitchRequiredItemId = Convert.ToInt32(drGameConfig["creatureAdditionalAttrSwitchRequiredItemId"]);
 			if (m_nCreatureAdditionalAttrSwitchRequiredItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처추가전환결과아이템ID가 유효하지 않습니다. m_nCreatureAdditionalAttrSwitchRequiredItemId = " + m_nCreatureAdditionalAttrSwitchRequiredItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_106 + "m_nCreatureAdditionalAttrSwitchRequiredItemId = " + m_nCreatureAdditionalAttrSwitchRequiredItemId);
 			}
 			m_nCreatureReleaseExpRetrievalRate = Convert.ToInt32(drGameConfig["creatureReleaseExpRetrievalRate"]);
 			if (m_nCreatureReleaseExpRetrievalRate < 0)
 			{
-				SFLogUtil.Warn(GetType(), "크리처방생경험치가 유효하지 않습니다. m_nCreatureReleaseExpRetrievalRate = " + m_nCreatureReleaseExpRetrievalRate);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_107 + "m_nCreatureReleaseExpRetrievalRate = " + m_nCreatureReleaseExpRetrievalRate);
 			}
 			int nGuildBlessingGuildTerritoryNpcId = Convert.ToInt32(drGameConfig["guildBlessingGuildTerritoryNpcId"]);
 			long lnOpen7DayEventCostumeItemRewardId = Convert.ToInt64(drGameConfig["open7DayEventCostumeItemRewardId"]);
 			m_nOpen7DayEventCostumeRewardRequiredItemId = Convert.ToInt32(drGameConfig["open7DayEventCostumeRewardRequiredItemId"]);
 			if (m_nOpen7DayEventCostumeRewardRequiredItemId <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "오픈7일이벤트코스튬보상필요아이템ID가 유효하지 않습니다. m_nOpen7DayEventCostumeRewardRequiredItemId = " + m_nOpen7DayEventCostumeRewardRequiredItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_108 + "m_nOpen7DayEventCostumeRewardRequiredItemId = " + m_nOpen7DayEventCostumeRewardRequiredItemId);
 			}
 			m_nOpen7DayEventCostumeRewardRequiredItemCount = Convert.ToInt32(drGameConfig["open7DayEventCostumeRewardRequiredItemCount"]);
 			if (m_nOpen7DayEventCostumeRewardRequiredItemCount <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "오픈7일이벤트코스튬보상필요아이템수량이 유효하지 않습니다. m_nOpen7DayEventCostumeRewardRequiredItemCount = " + m_nOpen7DayEventCostumeRewardRequiredItemCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_109 + "m_nOpen7DayEventCostumeRewardRequiredItemCount = " + m_nOpen7DayEventCostumeRewardRequiredItemCount);
 			}
 			m_nNationAllianceUnavailableStartTime = Convert.ToInt32(drGameConfig["nationAllianceUnavailableStartTime"]);
 			if (m_nNationAllianceUnavailableStartTime < 0 || m_nNationAllianceUnavailableStartTime >= 86400)
 			{
-				SFLogUtil.Warn(GetType(), "국가동맹불가시작시각이 유효하지 않습니다. m_nNationAllianceUnavailableStartTime = " + m_nNationAllianceUnavailableStartTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_110 + "m_nNationAllianceUnavailableStartTime = " + m_nNationAllianceUnavailableStartTime);
 			}
 			m_nNationAllianceUnavailableEndTime = Convert.ToInt32(drGameConfig["nationAllianceUnavailableEndTime"]);
 			if (m_nNationAllianceUnavailableEndTime < 0 || m_nNationAllianceUnavailableEndTime >= 86400)
 			{
-				SFLogUtil.Warn(GetType(), "국가동맹불가종료시각이 유효하지 않습니다. m_nNationAllianceUnavailableEndTime = " + m_nNationAllianceUnavailableEndTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_111 + "m_nNationAllianceUnavailableEndTime = " + m_nNationAllianceUnavailableEndTime);
 			}
 			if (m_nNationAllianceUnavailableStartTime >= m_nNationAllianceUnavailableEndTime)
 			{
-				SFLogUtil.Warn(GetType(), "국가동맹불가시작시각이 국가동맹불가종료시각보다 높거나 같습니다. m_nNationAllianceUnavailableStartTime = " + m_nNationAllianceUnavailableStartTime + ", m_nNationAllianceUnavailableEndTime = " + m_nNationAllianceUnavailableEndTime);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_112 + "m_nNationAllianceUnavailableStartTime = " + m_nNationAllianceUnavailableStartTime + ", m_nNationAllianceUnavailableEndTime = " + m_nNationAllianceUnavailableEndTime);
 			}
 			m_nNationAllianceRequiredFund = Convert.ToInt32(drGameConfig["nationAllianceRequiredFund"]);
 			if (m_nNationAllianceRequiredFund < 0)
 			{
-				SFLogUtil.Warn(GetType(), "국가동맹필요자금이 유효하지 않습니다. m_nNationAllianceRequiredFund = " + m_nNationAllianceRequiredFund);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_113 + "m_nNationAllianceRequiredFund = " + m_nNationAllianceRequiredFund);
 			}
 			m_nNationAllianceRenounceUnavailableDuration = Convert.ToInt32(drGameConfig["NationAllianceRenounceUnavailableDuration"]);
 			if (m_nNationAllianceRenounceUnavailableDuration < 0)
 			{
-				SFLogUtil.Warn(GetType(), "국가동맹파기불가기간이 유효하지 않습니다. m_nNationAllianceRenounceUnavailableDuration = " + m_nNationAllianceRenounceUnavailableDuration);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_114 + " m_nNationAllianceRenounceUnavailableDuration = " + m_nNationAllianceRenounceUnavailableDuration);
 			}
 			m_nNationBasePower = Convert.ToInt32(drGameConfig["nationBasePower"]);
 			if (m_nNationBasePower < 0)
 			{
-				SFLogUtil.Warn(GetType(), "국가초기국력이 유효하지 않습니다. m_nNationBasePower = " + m_nNationBasePower);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_115 + "m_nNationBasePower = " + m_nNationBasePower);
 			}
 			m_nJobChangeRequiredHeroLevel = Convert.ToInt32(drGameConfig["jobChangeRequiredHeroLevel"]);
 			if (m_nJobChangeRequiredHeroLevel <= 0)
 			{
-				SFLogUtil.Warn(GetType(), "전직퀘스트요구영웅레벨이 유효하지 않습니다. m_nJobChangeRequiredHeroLevel = " + m_nJobChangeRequiredHeroLevel);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_116 + "_nJobChangeRequiredHeroLevel = " + m_nJobChangeRequiredHeroLevel);
 			}
 			m_nJobChangeRequiredItemId = Convert.ToInt32(drGameConfig["jobChangeRequiredItemId"]);
 			if (m_nJobChangeRequiredItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "전직퀘스트요구아이템ID가 유효하지 않습니다. m_nJobChangeRequiredItemId = " + m_nJobChangeRequiredItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_117 + "m_nJobChangeRequiredItemId = " + m_nJobChangeRequiredItemId);
 			}
 			int nCostumeEnchantItemId = Convert.ToInt32(drGameConfig["costumeEnchantItemId"]);
 			m_nCostumeCollectionActivationItemId = Convert.ToInt32(drGameConfig["costumeCollectionActivationItemId"]);
 			if (m_nCostumeCollectionActivationItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "코스튬콜렉션활성화아이템ID가 유효하지 않습니다. m_nCostumeCollectionActivationItemId = " + m_nCostumeCollectionActivationItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_118 + "m_nCostumeCollectionActivationItemId = " + m_nCostumeCollectionActivationItemId);
 			}
 			m_nCostumeCollectionShuffleItemId = Convert.ToInt32(drGameConfig["costumeCollectionShuffleItemId"]);
 			if (m_nCostumeCollectionShuffleItemId < 0)
 			{
-				SFLogUtil.Warn(GetType(), "코스튬콜렉션셔플아이템ID가 유효하지 않습니다. m_nCostumeCollectionShuffleItemId = " + m_nCostumeCollectionShuffleItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_119 + "m_nCostumeCollectionShuffleItemId = " + m_nCostumeCollectionShuffleItemId);
 			}
 			m_nCostumeCollectionShuffleItemCount = Convert.ToInt32(drGameConfig["costumeCollectionShuffleItemCount"]);
 			if (m_nCostumeCollectionShuffleItemCount < 0)
 			{
-				SFLogUtil.Warn(GetType(), "코스튬콜렉션셔플아이템수량이 유효하지 않습니다. m_nCostumeCollectionShuffleItemCount = " + m_nCostumeCollectionShuffleItemCount);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_120 + "m_nCostumeCollectionShuffleItemCount = " + m_nCostumeCollectionShuffleItemCount);
 			}
 			foreach (DataRow dr28 in UserDac.BanWords(conn, null))
 			{
 				int nType = Convert.ToInt32(dr28["type"]);
 				if (!Enum.IsDefined(typeof(BanWordType), nType))
 				{
-					SFLogUtil.Warn(GetType(), "금지어 타입이 유효하지 않습니다. nType = " + nType);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_121 + "nType = " + nType);
 					continue;
 				}
 				BanWordType type = (BanWordType)nType;
@@ -2173,7 +2185,7 @@ public class Resource
 				ItemType itemType = GetItemType(nItemType);
 				if (itemType == null)
 				{
-					SFLogUtil.Warn(GetType(), "[아이템 목록] 아이템 타입이 존재하지 않습니다. nItemType = " + nItemType);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_122 + "nItemType = " + nItemType);
 					continue;
 				}
 				Item item3 = new Item(itemType);
@@ -2184,7 +2196,7 @@ public class Resource
 			ItemType creatureFeedItemType = GetItemType(37);
 			if (creatureFeedItemType == null)
 			{
-				SFLogUtil.Warn(GetType(), "[아이템관련] 크리쳐먹이타입아이템이 존재하지 않습니다. ");
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_123);
 			}
 			else
 			{
@@ -2194,7 +2206,7 @@ public class Resource
 			ItemType creatureEssence = GetItemType(38);
 			if (creatureEssence == null)
 			{
-				SFLogUtil.Warn(GetType(), "[아이템관련] 크리쳐정수타입아이템이 존재하지 않습니다. ");
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_124);
 			}
 			else
 			{
@@ -2203,31 +2215,31 @@ public class Resource
 			m_mountLevelUpItem = GetItem(nMountLevelUpItemId);
 			if (m_mountLevelUpItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 탈것레벨업아이템이 존재하지 않습니다. nMountLevelUpItemId = " + nMountLevelUpItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_125 + "nMountLevelUpItemId = " + nMountLevelUpItemId);
 			}
 			m_mountAwakeningItem = GetItem(nMountAwakeningItemId);
 			if (m_mountAwakeningItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 탈것각성아이템이 존재하지 않습니다. nMountAwakeningItemId = " + nMountAwakeningItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_126 + "nMountAwakeningItemId = " + nMountAwakeningItemId);
 			}
 			Item dungeonSweepItem = GetItem(m_nDungeonSweepItemId);
 			if (dungeonSweepItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 던전소탕아이템이 존재하지 않습니다. m_nDungeonSweepItemId = " + m_nDungeonSweepItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_127 + " m_nDungeonSweepItemId = " + m_nDungeonSweepItemId);
 			}
 			else if (dungeonSweepItem.type.id != 10)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 해당 아이템이 소탕아이템 타입이 아닙니다. m_nDungeonSweepItemId = " + m_nDungeonSweepItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_128 + "m_nDungeonSweepItemId = " + m_nDungeonSweepItemId);
 			}
 			m_guildHuntingDonationItem = GetItem(nGuildHuntingDonationItemId);
 			if (m_guildHuntingDonationItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 길드헌팅기부아이템이 존재하지 않습니다. nGuildHuntingDonationItemId = " + nGuildHuntingDonationItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_129 + "nGuildHuntingDonationItemId = " + nGuildHuntingDonationItemId);
 			}
 			m_costumeEnchantItem = GetItem(nCostumeEnchantItemId);
 			if (m_costumeEnchantItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 코스튬강화아이템이 존재하지 않습니다. nCostumeEnchantItemId = " + nCostumeEnchantItemId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_130 + "nCostumeEnchantItemId = " + nCostumeEnchantItemId);
 			}
 			foreach (DataRow dr61 in UserDac.ItemCompositionRecipes(conn, null))
 			{
@@ -2244,17 +2256,17 @@ public class Resource
 			m_guildHuntingDonationReward = GetItemReward(lnGuildHuntingDonationRewardId);
 			if (m_guildHuntingDonationItem == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 길드헌팅기부아이템보상이 존재하지 않습니다. lnGuildHuntingDonationRewardId = " + lnGuildHuntingDonationRewardId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_131 + "lnGuildHuntingDonationRewardId = " + lnGuildHuntingDonationRewardId);
 			}
 			m_guildHuntingDonationCompletionReward = GetItemReward(lnGuildHuntingDonationCompletionItemRewardId);
 			if (m_guildHuntingDonationCompletionReward == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 길드헌팅기부아이템완료보상이 존재하지 않습니다. lnGuildHuntingDonationCompletionItemRewardId = " + lnGuildHuntingDonationCompletionItemRewardId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_132 + "lnGuildHuntingDonationCompletionItemRewardId = " + lnGuildHuntingDonationCompletionItemRewardId);
 			}
 			m_open7DayEventCostumeItemReward = GetItemReward(lnOpen7DayEventCostumeItemRewardId);
 			if (m_open7DayEventCostumeItemReward == null)
 			{
-				SFLogUtil.Warn(GetType(), "[게임구성] 오픈7일이벤트코스튬아이템보상이 존재하지 않습니다. lnOpen7DayEventCostumeItemRewardId = " + lnOpen7DayEventCostumeItemRewardId);
+				SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_133 + "lnOpen7DayEventCostumeItemRewardId = " + lnOpen7DayEventCostumeItemRewardId);
 			}
 			foreach (DataRow dr58 in UserDac.Jobs(conn, null))
 			{
@@ -2274,19 +2286,19 @@ public class Resource
 				AbnormalState abnormalState2 = GetAbnormalState(nAbnormalStateId2);
 				if (abnormalState2 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[상태이상레벨 목록] 상태이상이 존재하지 않습니다. nAbnormalStateId = " + nAbnormalStateId2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_134 + "nAbnormalStateId = " + nAbnormalStateId2);
 					continue;
 				}
 				if (abnormalState2.sourceType != 1)
 				{
-					SFLogUtil.Warn(GetType(), "[상태이상레벨 목록] 상태이상 소스타입이 유효하지 않습니다. nAbnormalStateId = " + nAbnormalStateId2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_135 + "nAbnormalStateId = " + nAbnormalStateId2);
 					continue;
 				}
 				int nJobId8 = Convert.ToInt32(dr56["jobId"]);
 				Job job8 = GetJob(nJobId8);
 				if (job8 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[상태이상레벨 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId8);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_136 + "nJobId = " + nJobId8);
 					continue;
 				}
 				JobAbnormalState jobAbnormalState = abnormalState2.GetOrCreateJobAbnormalState(job8);
@@ -2300,12 +2312,12 @@ public class Resource
 				AbnormalState abnormalState = GetAbnormalState(nAbnormalStateId);
 				if (abnormalState == null)
 				{
-					SFLogUtil.Warn(GetType(), "[상태이상계급스킬레벨 목록] 상태이상이 존재하지 않습니다. nAbnormalStateId = " + nAbnormalStateId);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_137 + "nAbnormalStateId = " + nAbnormalStateId);
 					continue;
 				}
 				if (abnormalState.sourceType != 2)
 				{
-					SFLogUtil.Warn(GetType(), "[상태이상계급스킬레벨 목록] 상태이상 소스타입이 유효하지 않습니다. nAbnormalStateId = " + nAbnormalStateId);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_138 + "nAbnormalStateId = " + nAbnormalStateId);
 					continue;
 				}
 				AbnormalStateRankSkillLevel abnormalStateRankSkillLevel = new AbnormalStateRankSkillLevel(abnormalState);
@@ -2326,7 +2338,7 @@ public class Resource
 				JobSkillMaster skillMaster2 = GetJobSkillMaster(nSkillId3);
 				if (skillMaster2 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬레벨마스터 목록] 직업스킬마스터가 존재하지 않습니다. nSkillId = " + nSkillId3);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_139 + "nSkillId = " + nSkillId3);
 				}
 				else
 				{
@@ -2339,7 +2351,7 @@ public class Resource
 				JobSkillMaster skillMaster = GetJobSkillMaster(nSkillId2);
 				if (skillMaster == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬 목록] 직업스킬마스터가 존재하지 않습니다. nSkillId = " + nSkillId2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_140 + " nSkillId = " + nSkillId2);
 					continue;
 				}
 				JobSkill jobSkill6 = new JobSkill(skillMaster);
@@ -2348,7 +2360,7 @@ public class Resource
 				Job job7 = GetJob(nJobId7);
 				if (job7 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId7);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_141 + "nJobId = " + nJobId7);
 				}
 				else
 				{
@@ -2363,14 +2375,14 @@ public class Resource
 				Job job6 = GetJob(nJobId6);
 				if (job6 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬레벨 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId6);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_142 + "nJobId = " + nJobId6);
 					continue;
 				}
 				int nJobSkillId4 = Convert.ToInt32(dr49["skillId"]);
 				JobSkill jobSkill5 = job6.GetSkill(nJobSkillId4);
 				if (jobSkill5 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬레벨 목록] 직업스킬이 존재하지 않습니다. nJobSkillId = " + nJobSkillId4);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_143 + "nJobSkillId = " + nJobSkillId4);
 					continue;
 				}
 				jobSkill5.AddLevel(level4);
@@ -2378,7 +2390,7 @@ public class Resource
 				JobSkillLevelMaster levelMaster = jobSkill5.skillMaster.GetLevel(nLevel2);
 				if (levelMaster == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬레벨 목록] 직업스킬레벨마스터가 존재하지 않습니다. nJobSkillId = " + nJobSkillId4 + ", level = " + nLevel2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_144 + "nJobSkillId = " + nJobSkillId4 + ", level = " + nLevel2);
 				}
 				else
 				{
@@ -2393,14 +2405,14 @@ public class Resource
 				Job job5 = GetJob(nJobId5);
 				if (job5 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬적중 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId5);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_145 + "nJobId = " + nJobId5);
 					continue;
 				}
 				int nJobSkillId3 = Convert.ToInt32(dr47["skillId"]);
 				JobSkill jobSkill4 = job5.GetSkill(nJobSkillId3);
 				if (jobSkill4 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업스킬적중 목록] 직업스킬이 존재하지 않습니다. nJobSkillId = " + nJobSkillId3);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_146 + " nJobSkillId = " + nJobSkillId3);
 				}
 				else
 				{
@@ -2415,21 +2427,21 @@ public class Resource
 				Job job4 = GetJob(nJobId4);
 				if (job4 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬적중상태이상 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId4);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_147 + "nJobId = " + nJobId4);
 					continue;
 				}
 				int nSkillId = Convert.ToInt32(dr46["skillId"]);
 				JobSkill jobSkill3 = job4.GetSkill(nSkillId);
 				if (jobSkill3 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬적중상태이상 목록] 직업스킬이 존재하지 않습니다. nJobId = " + nJobId4 + ", nSkillId = " + nSkillId);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_148 + "nJobId = " + nJobId4 + ", nSkillId = " + nSkillId);
 					continue;
 				}
 				int nHitId = Convert.ToInt32(dr46["hitId"]);
 				JobSkillHit jobSkillHit = jobSkill3.GetJobSkillHit(nHitId);
 				if (jobSkillHit == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬적중상태이상 목록] 직업스킬적중이 존재하지 않습니다. nJobId = " + nJobId4 + ", nSkillId = " + nSkillId + ", nHitId = " + nHitId);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_149 + "nJobId = " + nJobId4 + ", nSkillId = " + nSkillId + ", nHitId = " + nHitId);
 				}
 				else
 				{
@@ -2444,14 +2456,14 @@ public class Resource
 				Job job3 = GetJob(nJobId3);
 				if (job3 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId3);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_150 + "nJobId = " + nJobId3);
 					continue;
 				}
 				int nJobSkillId2 = Convert.ToInt32(dr44["skillId"]);
 				JobSkill jobSkill2 = job3.GetSkill(nJobSkillId2);
 				if (jobSkill2 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬 목록] 직업스킬이 존재하지 않습니다. nJobSkillId = " + nJobSkillId2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_151 + "nJobSkillId = " + nJobSkillId2);
 				}
 				else
 				{
@@ -2466,7 +2478,7 @@ public class Resource
 				Job job2 = GetJob(nJobId2);
 				if (job2 == null)
 				{
-					SFLogUtil.Warn(GetType(), "[직업연계스킬적중 목록] 직업이 존재하지 않습니다. nJobId = " + nJobId2);
+					SFLogUtil.Warn(GetType(), Resources.Exception.Resource_LoadUserDBResources_152 + "nJobId = " + nJobId2);
 					continue;
 				}
 				int nJobSkillId = Convert.ToInt32(dr43["skillId"]);
@@ -8246,8 +8258,12 @@ public class Resource
 		{
 			throw new ArgumentException("location");
 		}
-		m_locations.Add(location.locationId, location);
-	}
+		if (!m_locations.ContainsKey(location.locationId))
+			m_locations.Add(location.locationId, location);
+		else
+			SFLogUtil.Error(GetType(), "[AddLocation]: An item with the same key has been added.");
+
+    }
 
 	public Location GetLocation(int nLocationId)
 	{

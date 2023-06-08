@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Resource_LoadUserDBResources_01" xml:space="preserve">
+    <value>시스템설정이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_02" xml:space="preserve">
+    <value>기본언어가 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_03" xml:space="preserve">
+    <value>게임구성이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_04" xml:space="preserve">
+    <value>시작대륙ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_05" xml:space="preserve">
+    <value>안전부활대륙ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_06" xml:space="preserve">
+    <value>간이상점판매 슬롯 갯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_07" xml:space="preserve">
+    <value>주말출석보상아이템 ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_08" xml:space="preserve">
+    <value>오늘의미션 카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_09" xml:space="preserve">
+    <value>메인장비추가옵션 최소갯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_10" xml:space="preserve">
+    <value>메인장비추가옵션 최대갯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_100" xml:space="preserve">
+    <value>크리처추가속성개수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_101" xml:space="preserve">
+    <value>크리처스킬슬롯최대개수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_102" xml:space="preserve">
+    <value>크리처스킬기본개방개수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_103" xml:space="preserve">
+    <value>크리처합성스킬보호아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_104" xml:space="preserve">
+    <value>크리처주입경험치회수비율이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_105" xml:space="preserve">
+    <value>크리처변이필요아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_106" xml:space="preserve">
+    <value>크리처추가전환결과아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_107" xml:space="preserve">
+    <value>크리처방생경험치가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_108" xml:space="preserve">
+    <value>오픈7일이벤트코스튬보상필요아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_109" xml:space="preserve">
+    <value>오픈7일이벤트코스튬보상필요아이템수량이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_11" xml:space="preserve">
+    <value>메인장비세련아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_110" xml:space="preserve">
+    <value>국가동맹불가시작시각이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_111" xml:space="preserve">
+    <value>국가동맹불가종료시각이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_112" xml:space="preserve">
+    <value>국가동맹불가시작시각이 국가동맹불가종료시각보다 높거나 같습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_113" xml:space="preserve">
+    <value>국가동맹필요자금이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_114" xml:space="preserve">
+    <value>국가동맹파기불가기간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_115" xml:space="preserve">
+    <value>국가초기국력이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_116" xml:space="preserve">
+    <value>전직퀘스트요구영웅레벨이 유효하지 않습니다. m</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_117" xml:space="preserve">
+    <value>전직퀘스트요구아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_118" xml:space="preserve">
+    <value>코스튬콜렉션활성화아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_119" xml:space="preserve">
+    <value>코스튬콜렉션셔플아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_12" xml:space="preserve">
+    <value>메인장비분해 슬롯 갯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_120" xml:space="preserve">
+    <value>코스튬콜렉션셔플아이템수량이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_121" xml:space="preserve">
+    <value>금지어 타입이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_122" xml:space="preserve">
+    <value>[아이템 목록] 아이템 타입이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_123" xml:space="preserve">
+    <value>[아이템관련] 크리쳐먹이타입아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_124" xml:space="preserve">
+    <value>[아이템관련] 크리쳐정수타입아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_125" xml:space="preserve">
+    <value>[게임구성] 탈것레벨업아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_126" xml:space="preserve">
+    <value>[게임구성] 탈것각성아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_127" xml:space="preserve">
+    <value>[게임구성] 던전소탕아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_128" xml:space="preserve">
+    <value>[게임구성] 해당 아이템이 소탕아이템 타입이 아닙니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_129" xml:space="preserve">
+    <value>[게임구성] 길드헌팅기부아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_13" xml:space="preserve">
+    <value>파티멤버최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_130" xml:space="preserve">
+    <value>[게임구성] 코스튬강화아이템이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_131" xml:space="preserve">
+    <value>[게임구성] 길드헌팅기부아이템보상이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_132" xml:space="preserve">
+    <value>[게임구성] 길드헌팅기부아이템완료보상이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_133" xml:space="preserve">
+    <value>[게임구성] 오픈7일이벤트코스튬아이템보상이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_134" xml:space="preserve">
+    <value>[상태이상레벨 목록] 상태이상이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_135" xml:space="preserve">
+    <value>[상태이상레벨 목록] 상태이상 소스타입이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_136" xml:space="preserve">
+    <value>[상태이상레벨 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_137" xml:space="preserve">
+    <value>[상태이상계급스킬레벨 목록] 상태이상이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_138" xml:space="preserve">
+    <value>[상태이상계급스킬레벨 목록] 상태이상 소스타입이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_139" xml:space="preserve">
+    <value>[직업스킬레벨마스터 목록] 직업스킬마스터가 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_14" xml:space="preserve">
+    <value>파티멤버로그아웃기간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_140" xml:space="preserve">
+    <value>[직업스킬 목록] 직업스킬마스터가 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_141" xml:space="preserve">
+    <value>[직업스킬 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_142" xml:space="preserve">
+    <value>[직업스킬레벨 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_143" xml:space="preserve">
+    <value>[직업스킬레벨 목록] 직업스킬이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_144" xml:space="preserve">
+    <value>[직업스킬레벨 목록] 직업스킬레벨마스터가 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_145" xml:space="preserve">
+    <value>[직업스킬적중 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_146" xml:space="preserve">
+    <value>[직업스킬적중 목록] 직업스킬이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_147" xml:space="preserve">
+    <value>[직업연계스킬적중상태이상 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_148" xml:space="preserve">
+    <value>[직업연계스킬적중상태이상 목록] 직업스킬이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_149" xml:space="preserve">
+    <value>[직업연계스킬적중상태이상 목록] 직업스킬적중이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_15" xml:space="preserve">
+    <value>파티초대생명주기가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_150" xml:space="preserve">
+    <value>[직업연계스킬 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_151" xml:space="preserve">
+    <value>[직업연계스킬 목록] 직업스킬이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_152" xml:space="preserve">
+    <value>[직업연계스킬적중 목록] 직업이 존재하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_16" xml:space="preserve">
+    <value>파티가입신청생명주기가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_17" xml:space="preserve">
+    <value>파티소집쿨타임이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_18" xml:space="preserve">
+    <value>휴식보상필요영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_19" xml:space="preserve">
+    <value>골드휴식보상비율이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_20" xml:space="preserve">
+    <value>다이아휴식보상비율이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_21" xml:space="preserve">
+    <value>채팅최대길이가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_22" xml:space="preserve">
+    <value>채팅최소인터벌이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_23" xml:space="preserve">
+    <value>세계채팅아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_24" xml:space="preserve">
+    <value>탈것품질업요구레벨업수량이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_25" xml:space="preserve">
+    <value>장착된탈것속성가중치가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_26" xml:space="preserve">
+    <value>탈것장비옵션속성갯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_27" xml:space="preserve">
+    <value>탈것장비세련아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_28" xml:space="preserve">
+    <value>탈것각성필요영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_29" xml:space="preserve">
+    <value>탈것포션속성아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_30" xml:space="preserve">
+    <value>날개강화아이템ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_31" xml:space="preserve">
+    <value>날개강화경험치가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_32" xml:space="preserve">
+    <value>날개표시최소VIP레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_33" xml:space="preserve">
+    <value>최대스태미너가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_34" xml:space="preserve">
+    <value>스태미너회복시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_35" xml:space="preserve">
+    <value>카트일반속력이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_36" xml:space="preserve">
+    <value>카트고속속력이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_37" xml:space="preserve">
+    <value>카트고속속력기간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_38" xml:space="preserve">
+    <value>카트고속속력기간확장이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_39" xml:space="preserve">
+    <value>카트가속쿨타임이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_40" xml:space="preserve">
+    <value>카트가속성공율이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_41" xml:space="preserve">
+    <value>PVP최소영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_42" xml:space="preserve">
+    <value>세계레벨경험치버프최소영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_43" xml:space="preserve">
+    <value>현상금사냥꾼퀘스트최대횟수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_44" xml:space="preserve">
+    <value>랭킹표시 최대카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_45" xml:space="preserve">
+    <value>길드랭킹표시 최대카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_46" xml:space="preserve">
+    <value>선물인기점수랭킹표시 최대카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_47" xml:space="preserve">
+    <value>선물공헌점수랭킹표시 최대카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_48" xml:space="preserve">
+    <value>길드 요구영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_49" xml:space="preserve">
+    <value>길드생성 요구VIP레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_50" xml:space="preserve">
+    <value>길드생성 요구다이아가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_51" xml:space="preserve">
+    <value>길드재가입간격시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_52" xml:space="preserve">
+    <value>길드가입신청접수최대횟수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_53" xml:space="preserve">
+    <value>길드일일신청최대횟수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_54" xml:space="preserve">
+    <value>길드일일추방최대횟수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_55" xml:space="preserve">
+    <value>길드초대생명주기가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_56" xml:space="preserve">
+    <value>길드알림최대길이가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_57" xml:space="preserve">
+    <value>길드부길드장수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_58" xml:space="preserve">
+    <value>길드로드수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_59" xml:space="preserve">
+    <value>길드소집생명주기가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_60" xml:space="preserve">
+    <value>길드소집반경이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_61" xml:space="preserve">
+    <value>길드일일목표알림쿨타임이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_62" xml:space="preserve">
+    <value>기본길드주간목표ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_63" xml:space="preserve">
+    <value>길드헌팅기부최대횟수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_64" xml:space="preserve">
+    <value>계급개방메인퀘스트번호가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_65" xml:space="preserve">
+    <value>날개개방영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_66" xml:space="preserve">
+    <value>날개개방지급날개ID가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_67" xml:space="preserve">
+    <value>국가소집생명주기시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_68" xml:space="preserve">
+    <value>국가소집반경이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_69" xml:space="preserve">
+    <value>국가전몬스터전투모드유지기간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_70" xml:space="preserve">
+    <value>크리처카드상점랜덤상품수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_71" xml:space="preserve">
+    <value>크리처카드상점유료갱신다이아가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_72" xml:space="preserve">
+    <value>가속필요이동지속시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_73" xml:space="preserve">
+    <value>가속이동속도가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_74" xml:space="preserve">
+    <value>풍광퀘스트필요메인퀘스트번호가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_75" xml:space="preserve">
+    <value>몬스터그로기유지시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_76" xml:space="preserve">
+    <value>몬스터훔치기유지시간이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_77" xml:space="preserve">
+    <value>오픈선물요구영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_78" xml:space="preserve">
+    <value>오픈7일이벤트필요메인퀘스트번호가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_79" xml:space="preserve">
+    <value>현상금사냥꾼퀘스트요구영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_80" xml:space="preserve">
+    <value>할일위탁필요VIP레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_81" xml:space="preserve">
+    <value>정예몬스터처치적용필요영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_82" xml:space="preserve">
+    <value>창고필요VIP레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_83" xml:space="preserve">
+    <value>무료창고슬롯수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_84" xml:space="preserve">
+    <value>날개기억조각장착필요영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_85" xml:space="preserve">
+    <value>시련퀘스트슬롯카운트가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_86" xml:space="preserve">
+    <value>친구최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_87" xml:space="preserve">
+    <value>임시친구최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_88" xml:space="preserve">
+    <value>사망기록최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_89" xml:space="preserve">
+    <value>블랙리스트항목최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_90" xml:space="preserve">
+    <value>축복퀘스트목록최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_91" xml:space="preserve">
+    <value>축복퀘스트필요영웅레벨이 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_92" xml:space="preserve">
+    <value>축복목록최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_93" xml:space="preserve">
+    <value>소유유망자퀘스트목록최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_95" xml:space="preserve">
+    <value>대상유망자퀘스트목록최대수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_96" xml:space="preserve">
+    <value>크리처최대개수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_97" xml:space="preserve">
+    <value>크리처응원최대개수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_98" xml:space="preserve">
+    <value>크리처응원속성계수가 유효하지 않습니다.</value>
+  </data>
+  <data name="Resource_LoadUserDBResources_99" xml:space="preserve">
+    <value>크리처평점계수가 유효하지 않습니다.</value>
+  </data>
+</root>
